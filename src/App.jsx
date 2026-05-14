@@ -39,14 +39,11 @@ function App() {
       return savedTheme;
     }
 
-    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    return "dark";
   });
-  const stageRef = useRef(null);
-  const cursorDotRef = useRef(null);
-  const cursorFrameRef = useRef(null);
   const canvasRef = useRef(null);
 
-  useCursor(stageRef, cursorDotRef, cursorFrameRef);
+  usePointerDrift();
   useAtmosphere(canvasRef);
 
   useEffect(() => {
@@ -66,7 +63,7 @@ function App() {
   }
 
   return (
-    <main ref={stageRef} className="identity-stage" aria-label="Declan Chan personal connect page">
+    <main className="identity-stage" aria-label="Declan Chan personal connect page">
       <button
         className="theme-toggle"
         type="button"
@@ -136,9 +133,6 @@ function App() {
       </section>
 
       <TorontoClock />
-
-      <div ref={cursorDotRef} className="cursor-dot" aria-hidden="true" />
-      <div ref={cursorFrameRef} className="cursor-frame" aria-hidden="true" />
     </main>
   );
 }
@@ -162,24 +156,18 @@ function TorontoClock() {
   );
 }
 
-function useCursor(stageRef, dotRef, frameRef) {
+function usePointerDrift() {
   useEffect(() => {
     const finePointer = window.matchMedia("(pointer: fine)");
     if (!finePointer.matches) return undefined;
 
     let pointerX = window.innerWidth / 2;
     let pointerY = window.innerHeight / 2;
-    let frameX = pointerX;
-    let frameY = pointerY;
     let smoothDriftX = 0;
     let smoothDriftY = 0;
     let targetDriftX = 0;
     let targetDriftY = 0;
     let animationFrame = 0;
-
-    function setHovering(isHovering) {
-      document.documentElement.toggleAttribute("data-cursor-active", isHovering);
-    }
 
     function move(event) {
       pointerX = event.clientX;
@@ -189,15 +177,9 @@ function useCursor(stageRef, dotRef, frameRef) {
       const centerY = window.innerHeight / 2;
       targetDriftX = (pointerX - centerX) / centerX;
       targetDriftY = (pointerY - centerY) / centerY;
-
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${pointerX}px, ${pointerY}px, 0) translate(-50%, -50%)`;
-      }
     }
 
     function render() {
-      frameX += (pointerX - frameX) * 0.22;
-      frameY += (pointerY - frameY) * 0.22;
       smoothDriftX += (targetDriftX - smoothDriftX) * 0.075;
       smoothDriftY += (targetDriftY - smoothDriftY) * 0.075;
 
@@ -210,34 +192,17 @@ function useCursor(stageRef, dotRef, frameRef) {
       document.documentElement.style.setProperty("--far-x", (smoothDriftX * 0.22).toFixed(4));
       document.documentElement.style.setProperty("--far-y", (smoothDriftY * 0.22).toFixed(4));
 
-      if (frameRef.current) {
-        frameRef.current.style.transform = `translate3d(${frameX}px, ${frameY}px, 0) translate(-50%, -50%)`;
-      }
-
       animationFrame = window.requestAnimationFrame(render);
     }
-
-    const hoverTargets = Array.from(stageRef.current?.querySelectorAll("a, button") ?? []).map((target) => {
-      const enter = () => setHovering(true);
-      const leave = () => setHovering(false);
-      target.addEventListener("mouseenter", enter);
-      target.addEventListener("mouseleave", leave);
-      return { target, enter, leave };
-    });
 
     window.addEventListener("mousemove", move);
     render();
 
     return () => {
       window.removeEventListener("mousemove", move);
-      hoverTargets.forEach(({ target, enter, leave }) => {
-        target.removeEventListener("mouseenter", enter);
-        target.removeEventListener("mouseleave", leave);
-      });
       window.cancelAnimationFrame(animationFrame);
-      document.documentElement.removeAttribute("data-cursor-active");
     };
-  }, [dotRef, frameRef, stageRef]);
+  }, []);
 }
 
 function useAtmosphere(canvasRef) {
