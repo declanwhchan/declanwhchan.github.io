@@ -1,47 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050712" />
+    <script>
+      (() => {
+        try {
+          const savedTheme = window.localStorage.getItem("declan-theme");
+          const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          document.documentElement.dataset.theme =
+            savedTheme === "light" || savedTheme === "dark" ? savedTheme : systemTheme;
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
+    <meta name="description" content="Declan Chan." />
+    <meta
+      name="keywords"
+      content="Declan Chan, social links, GitHub, LinkedIn, Engineering Science, University of Toronto"
+    />
+    <meta property="og:title" content="Declan Chan" />
+    <meta property="og:description" content="Declan Chan." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://declanwhchan.github.io/" />
+    <meta property="og:image" content="https://declanwhchan.github.io/assets/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Declan Chan",
+        "url": "https://declanwhchan.github.io/",
+        "email": "mailto:declan.chan@mail.utoronto.ca",
+        "sameAs": [
+          "https://github.com/declanwhchan",
+          "https://www.linkedin.com/in/declanwhchan/"
+        ],
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Toronto"
+        }
+      }
+    </script>
     <title>Declan Chan</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/PNG" sizes="32x32" href="assets/Logo.PNG">
-</head>
-<body>
-    <div id="cursor-follower"></div>
-    <div id="cursor-main"></div>
-    
-    <main class="wrapper">
-        <header class="hero">
-            <div class="profile-static">
-                <img src="assets/Logo.PNG" alt="Declan Chan" onerror="this.src='https://ui-avatars.com/api/?name=DC&background=0f172a&color=fff&size=200'">
-            </div>
-            <h1 class="name">Declan Chan</h1>
-            <p class="sub-text">Engineering Science <span>@ University of Toronto</span></p>
-        </header>
-
-        <nav class="bento-grid">
-            <a href="https://github.com/declanwhchan" target="_blank" class="flow-card">
-                <i class="fa-brands fa-github"></i>
-                <div class="label">GitHub</div>
-            </a>
-            <a href="https://www.linkedin.com/in/declanwhchan/" target="_blank" class="flow-card">
-                <i class="fa-brands fa-linkedin-in"></i>
-                <div class="label">LinkedIn</div>
-            </a>
-            <div id="copy-btn" class="flow-card">
-                <i class="fa-solid fa-copy"></i>
-                <div id="email-label" class="label">Copy Email</div>
-            </div>
-            <a href="assets/ChanDeclanCV.pdf" target="_blank" class="flow-card cv-style">
-                <i class="fa-solid fa-file-pdf"></i>
-                <div class="label">View CV</div>
-            </a>
-        </nav>
-    </main>
-
-    <script src="script.js"></script>
-</body>
-
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
