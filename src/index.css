@@ -3,25 +3,17 @@
   --ink: #f2f8ff;
   --muted: #9dacc1;
   --line: rgba(203, 231, 255, 0.15);
-  --glass: rgba(8, 14, 27, 0.62);
-  --glass-strong: rgba(12, 20, 36, 0.82);
-  --void: #02040b;
+  --glass: rgba(7, 12, 25, 0.64);
+  --glass-strong: rgba(10, 17, 32, 0.84);
+  --void: #01020a;
   --control-bg: rgba(8, 14, 27, 0.58);
   --control-border: rgba(214, 239, 255, 0.18);
   --control-shadow: rgba(0, 0, 0, 0.28);
   --icon: rgba(210, 232, 247, 0.74);
   --focus: rgba(152, 220, 247, 0.92);
-  --aurora: rgba(65, 177, 214, 0.34);
-  --lensing: rgba(141, 119, 220, 0.2);
+  --aurora: rgba(55, 168, 216, 0.28);
+  --lensing: rgba(126, 101, 210, 0.18);
   --link-glow: rgba(68, 181, 224, 0.22);
-  --drift-x: 0;
-  --drift-y: 0;
-  --near-x: 0;
-  --near-y: 0;
-  --mid-x: 0;
-  --mid-y: 0;
-  --far-x: 0;
-  --far-y: 0;
 }
 
 :root[data-theme="light"] {
@@ -92,17 +84,17 @@ button:focus-visible {
   place-items: center;
   padding: 2rem 1rem;
   background:
-    radial-gradient(ellipse at calc(18% + var(--far-x) * 6vw) calc(18% + var(--far-y) * 4vh), rgba(49, 147, 189, 0.16), transparent 30rem),
-    radial-gradient(ellipse at calc(80% - var(--mid-x) * 7vw) calc(70% - var(--mid-y) * 5vh), rgba(93, 68, 163, 0.13), transparent 32rem),
-    radial-gradient(ellipse at 48% 48%, rgba(8, 29, 57, 0.48), transparent 35rem),
-    linear-gradient(150deg, #01030a 0%, #030716 34%, #071326 67%, #02040b 100%);
+    radial-gradient(ellipse at 18% 20%, rgba(37, 135, 185, 0.13), transparent 34rem),
+    radial-gradient(ellipse at 78% 70%, rgba(97, 70, 170, 0.1), transparent 36rem),
+    radial-gradient(ellipse at 50% 52%, rgba(5, 19, 46, 0.56), transparent 39rem),
+    linear-gradient(150deg, #01020a 0%, #030716 36%, #071124 68%, #01030a 100%);
   isolation: isolate;
 }
 
 :root[data-theme="light"] .identity-stage {
   background:
-    radial-gradient(ellipse at calc(16% + var(--far-x) * 5vw) calc(16% + var(--far-y) * 4vh), rgba(63, 136, 176, 0.13), transparent 30rem),
-    radial-gradient(ellipse at calc(82% - var(--mid-x) * 6vw) calc(72% - var(--mid-y) * 5vh), rgba(100, 112, 172, 0.11), transparent 32rem),
+    radial-gradient(ellipse at 16% 16%, rgba(63, 136, 176, 0.13), transparent 30rem),
+    radial-gradient(ellipse at 82% 72%, rgba(100, 112, 172, 0.11), transparent 32rem),
     linear-gradient(150deg, #fbfdff 0%, #edf6fc 42%, #e3edf7 72%, #f9fcff 100%);
 }
 
@@ -111,19 +103,16 @@ button:focus-visible {
   inset: -16%;
   z-index: -5;
   background:
-    radial-gradient(ellipse at calc(22% + var(--far-x) * 3vw) calc(28% + var(--far-y) * 3vh), var(--aurora), transparent 34rem),
-    radial-gradient(ellipse at calc(78% - var(--far-x) * 2vw) calc(38% - var(--far-y) * 2vh), var(--lensing), transparent 30rem),
-    linear-gradient(105deg, transparent 22%, rgba(210, 240, 255, 0.035) 48%, transparent 66%);
-  filter: blur(22px);
-  opacity: 0.76;
-  transform: translate3d(calc(var(--far-x) * -0.65rem), calc(var(--far-y) * -0.48rem), 0);
+    radial-gradient(ellipse at 22% 28%, var(--aurora), transparent 38rem),
+    linear-gradient(105deg, transparent 24%, rgba(205, 238, 255, 0.03) 48%, transparent 68%);
+  filter: blur(26px);
+  opacity: 0.58;
   content: "";
 }
 
 :root[data-theme="light"] .identity-stage::before {
   background:
-    radial-gradient(ellipse at calc(22% + var(--far-x) * 3vw) calc(28% + var(--far-y) * 3vh), rgba(55, 127, 165, 0.11), transparent 34rem),
-    radial-gradient(ellipse at calc(78% - var(--far-x) * 2vw) calc(38% - var(--far-y) * 2vh), rgba(94, 104, 165, 0.09), transparent 30rem);
+    radial-gradient(ellipse at 22% 28%, rgba(55, 127, 165, 0.11), transparent 34rem);
   opacity: 0.68;
 }
 
@@ -133,12 +122,11 @@ button:focus-visible {
   z-index: 8;
   pointer-events: none;
   background-image:
-    radial-gradient(circle at 50% 50%, transparent 0 42%, rgba(0, 0, 0, 0.35) 100%),
-    linear-gradient(115deg, rgba(255, 255, 255, 0.028), transparent 24%, rgba(139, 215, 247, 0.018) 45%, transparent 66%),
-    repeating-radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.038) 0 1px, transparent 1px 7px);
-  background-size: auto, 520px 520px, 17px 17px;
+    radial-gradient(circle at 50% 52%, transparent 0 44%, rgba(0, 0, 0, 0.4) 100%),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.026), transparent 24%, rgba(139, 215, 247, 0.016) 45%, transparent 68%);
+  background-size: auto, 580px 580px;
   mix-blend-mode: soft-light;
-  opacity: 0.46;
+  opacity: 0.5;
   content: "";
 }
 
@@ -155,7 +143,7 @@ button:focus-visible {
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.88;
+  opacity: 1;
   pointer-events: none;
   transform: translateZ(0);
 }
@@ -242,8 +230,6 @@ button:focus-visible {
   width: min(100%, 438px);
   justify-items: center;
   padding: 1.35rem 0;
-  transform: translate3d(calc(var(--near-x) * -0.1rem), calc(var(--near-y) * -0.07rem), 0);
-  will-change: transform;
 }
 
 .profile-mark {
