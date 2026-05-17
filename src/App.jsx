@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Check, FileText, Github, Linkedin, Mail, Moon, Sun } from "lucide-react";
+import cvUrl from "./assets/ChanDeclanCV.pdf";
+import logoUrl from "./assets/logo.png";
 
 const email = "declan.chan@mail.utoronto.ca";
 
@@ -25,7 +27,7 @@ const primaryLinks = [
   },
   {
     label: "CV",
-    href: "/assets/ChanDeclanCV.pdf",
+    href: cvUrl,
     icon: FileText,
   },
 ];
@@ -74,31 +76,10 @@ function App() {
       </button>
 
       <canvas ref={canvasRef} className="particle-canvas" aria-hidden="true" />
-      <div className="ambient-system" aria-hidden="true">
-        <span className="coordinate-plane coordinate-plane-a" />
-        <span className="coordinate-plane coordinate-plane-b" />
-        <span className="orbital-arc orbital-arc-a" />
-        <span className="orbital-arc orbital-arc-b" />
-        <span className="gravity-ring gravity-ring-a" />
-        <span className="gravity-ring gravity-ring-b" />
-        <span className="constellation-line constellation-line-a" />
-        <span className="constellation-line constellation-line-b" />
-        <span className="constellation-line constellation-line-c" />
-        <span className="science-marker science-marker-a" />
-        <span className="science-marker science-marker-b" />
-        <span className="science-marker science-marker-c" />
-        <span className="radial-coordinate radial-coordinate-a" />
-        <span className="radial-coordinate radial-coordinate-b" />
-        <span className="refraction-line refraction-line-a" />
-        <span className="refraction-line refraction-line-b" />
-        <span className="haze-field haze-field-a" />
-        <span className="haze-field haze-field-b" />
-        <span className="light-band" />
-      </div>
 
       <section className="hub" aria-labelledby="hub-title">
         <div className="profile-mark" aria-hidden="true">
-          <img src="/assets/logo.png" width="72" height="72" alt="" decoding="async" />
+          <img src={logoUrl} width="72" height="72" alt="" decoding="async" />
         </div>
 
         <div className="name-line">
@@ -211,27 +192,29 @@ function useAtmosphere(canvasRef) {
     const context = canvas?.getContext("2d", { alpha: true });
     if (!canvas || !context) return undefined;
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let particles = [];
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let reduceMotion = motionQuery.matches;
+    let dust = [];
     let width = 0;
     let height = 0;
     let ratio = 1;
     let frame = 0;
+    let resizeFrame = 0;
+    let currentTheme = "";
     let lastFrame = performance.now();
+    const backdrop = document.createElement("canvas");
+    const backdropContext = backdrop.getContext("2d", { alpha: true });
     const pointer = {
       x: window.innerWidth / 2,
       y: window.innerHeight / 2,
       targetX: window.innerWidth / 2,
       targetY: window.innerHeight / 2,
-      velocityX: 0,
-      velocityY: 0,
       speed: 0,
       active: false,
     };
 
-    function createParticle(index) {
-      const z = 0.12 + Math.random() * 0.88;
-      const depth = z * z;
+    function createDust(index) {
+      const depth = 0.18 + Math.random() * 0.82;
       const x = Math.random() * width;
       const y = Math.random() * height;
 
@@ -240,40 +223,103 @@ function useAtmosphere(canvasRef) {
         y,
         homeX: x,
         homeY: y,
-        vx: 0,
-        vy: 0,
-        z,
-        radius: 0.35 + depth * 1.45 + (index % 23 === 0 ? 0.55 : 0),
-        alpha: 0.08 + depth * 0.32 + (index % 29 === 0 ? 0.1 : 0),
-        hue: index % 8 === 0 ? 191 : index % 5 === 0 ? 235 : 210 + Math.random() * 18,
+        depth,
+        radius: 0.38 + depth * 0.95 + (index % 37 === 0 ? 0.42 : 0),
+        alpha: 0.1 + depth * 0.3,
+        hue: index % 7 === 0 ? 184 : index % 5 === 0 ? 258 : 209 + Math.random() * 24,
         phase: Math.random() * Math.PI * 2,
-        driftSpeed: 0.00022 + Math.random() * 0.00032,
-        orbit: Math.random() > 0.5 ? 1 : -1,
+        driftX: 1.6 + Math.random() * 5.2,
+        driftY: 1.1 + Math.random() * 4.4,
+        speed: 0.00018 + Math.random() * 0.00022,
       };
     }
 
+    function renderBackdrop(isLight) {
+      if (!backdropContext) return;
+
+      backdrop.width = Math.floor(width * ratio);
+      backdrop.height = Math.floor(height * ratio);
+      backdropContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+      backdropContext.clearRect(0, 0, width, height);
+
+      const base = backdropContext.createLinearGradient(0, 0, width, height);
+      if (isLight) {
+        base.addColorStop(0, "#f8fcff");
+        base.addColorStop(0.42, "#eaf3fb");
+        base.addColorStop(0.72, "#dfeaf4");
+        base.addColorStop(1, "#fafdff");
+      } else {
+        base.addColorStop(0, "#01030a");
+        base.addColorStop(0.34, "#04081a");
+        base.addColorStop(0.66, "#071122");
+        base.addColorStop(1, "#02040b");
+      }
+      backdropContext.fillStyle = base;
+      backdropContext.fillRect(0, 0, width, height);
+
+      const nebulae = [
+        [width * 0.2, height * 0.24, Math.max(width, height) * 0.62, isLight ? "rgba(55, 125, 166, 0.12)" : "rgba(37, 143, 189, 0.18)"],
+        [width * 0.78, height * 0.68, Math.max(width, height) * 0.58, isLight ? "rgba(82, 89, 164, 0.1)" : "rgba(87, 65, 168, 0.14)"],
+        [width * 0.52, height * 0.46, Math.max(width, height) * 0.42, isLight ? "rgba(32, 83, 126, 0.075)" : "rgba(20, 51, 98, 0.2)"],
+      ];
+
+      backdropContext.globalCompositeOperation = isLight ? "source-over" : "screen";
+      nebulae.forEach(([x, y, radius, color]) => {
+        const gradient = backdropContext.createRadialGradient(x, y, 0, x, y, radius);
+        gradient.addColorStop(0, color);
+        gradient.addColorStop(0.36, color.replace(/[\d.]+\)$/, isLight ? "0.045)" : "0.07)"));
+        gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+        backdropContext.fillStyle = gradient;
+        backdropContext.fillRect(0, 0, width, height);
+      });
+
+      backdropContext.globalCompositeOperation = "source-over";
+      backdropContext.fillStyle = isLight ? "rgba(18, 50, 78, 0.18)" : "rgba(219, 241, 255, 0.62)";
+      const starCount = width < 560 ? 74 : width < 920 ? 108 : 148;
+      for (let index = 0; index < starCount; index += 1) {
+        const x = Math.random() * width;
+        const y = Math.random() * height;
+        const alpha = Math.random() * (isLight ? 0.18 : 0.42);
+        const size = Math.random() < 0.08 ? 1.2 : 0.65;
+        backdropContext.globalAlpha = alpha;
+        backdropContext.fillRect(x, y, size, size);
+      }
+
+      backdropContext.globalAlpha = isLight ? 0.05 : 0.08;
+      backdropContext.strokeStyle = isLight ? "rgba(18, 58, 92, 0.28)" : "rgba(154, 215, 246, 0.32)";
+      backdropContext.lineWidth = 1;
+      backdropContext.beginPath();
+      const lensY = height * 0.56;
+      backdropContext.moveTo(-30, lensY);
+      for (let x = -30; x <= width + 30; x += 70) {
+        backdropContext.lineTo(x, lensY + Math.sin(x * 0.012) * 14);
+      }
+      backdropContext.stroke();
+      backdropContext.globalAlpha = 1;
+    }
+
     function resize() {
-      ratio = Math.min(window.devicePixelRatio || 1, 1.75);
       width = window.innerWidth;
       height = window.innerHeight;
-      canvas.width = width * ratio;
-      canvas.height = height * ratio;
+      ratio = Math.min(window.devicePixelRatio || 1, width < 700 ? 1.1 : 1.25);
+      canvas.width = Math.floor(width * ratio);
+      canvas.height = Math.floor(height * ratio);
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-      const particleCount = width < 560 ? 118 : width < 920 ? 168 : 228;
-      particles = Array.from({ length: particleCount }, (_, index) => createParticle(index));
+      currentTheme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+      renderBackdrop(currentTheme === "light");
+
+      const dustCount = reduceMotion ? 42 : width < 560 ? 64 : width < 920 ? 88 : 118;
+      dust = Array.from({ length: dustCount }, (_, index) => createDust(index));
     }
 
     function movePointer(event) {
-      const rect = canvas.getBoundingClientRect();
-      const nextX = event.clientX - rect.left;
-      const nextY = event.clientY - rect.top;
+      const nextX = event.clientX;
+      const nextY = event.clientY;
 
-      pointer.velocityX = nextX - pointer.targetX;
-      pointer.velocityY = nextY - pointer.targetY;
-      pointer.speed += (Math.hypot(pointer.velocityX, pointer.velocityY) - pointer.speed) * 0.35;
+      pointer.speed += (Math.hypot(nextX - pointer.targetX, nextY - pointer.targetY) - pointer.speed) * 0.22;
       pointer.targetX = nextX;
       pointer.targetY = nextY;
       pointer.active = true;
@@ -283,145 +329,111 @@ function useAtmosphere(canvasRef) {
       pointer.active = false;
     }
 
-    function drawNebula(time, isLight) {
-      const driftX = Math.sin(time * 0.00006) * 0.045;
-      const driftY = Math.cos(time * 0.00005) * 0.038;
-      const primary = context.createRadialGradient(
-        width * (0.24 + driftX * 0.08),
-        height * (0.22 + driftY * 0.05),
-        0,
-        width * (0.24 + driftX * 0.08),
-        height * (0.22 + driftY * 0.05),
-        Math.max(width, height) * 0.72,
-      );
-      const secondary = context.createRadialGradient(
-        width * (0.78 - driftX * 0.06),
-        height * (0.72 - driftY * 0.08),
-        0,
-        width * (0.78 - driftX * 0.06),
-        height * (0.72 - driftY * 0.08),
-        Math.max(width, height) * 0.62,
-      );
+    function scheduleResize() {
+      if (resizeFrame) return;
+      resizeFrame = window.requestAnimationFrame(() => {
+        resizeFrame = 0;
+        resize();
+      });
+    }
 
-      primary.addColorStop(0, isLight ? "rgba(67, 128, 168, 0.075)" : "rgba(78, 166, 210, 0.13)");
-      primary.addColorStop(0.42, isLight ? "rgba(95, 108, 176, 0.042)" : "rgba(108, 93, 188, 0.07)");
-      primary.addColorStop(1, "rgba(0, 0, 0, 0)");
+    function handleMotionChange(event) {
+      reduceMotion = event.matches;
+      resize();
+    }
 
-      secondary.addColorStop(0, isLight ? "rgba(37, 93, 127, 0.048)" : "rgba(33, 83, 138, 0.12)");
-      secondary.addColorStop(0.48, isLight ? "rgba(112, 123, 176, 0.028)" : "rgba(94, 115, 210, 0.052)");
-      secondary.addColorStop(1, "rgba(0, 0, 0, 0)");
+    function handleVisibilityChange() {
+      lastFrame = performance.now();
+    }
 
-      context.globalCompositeOperation = isLight ? "source-over" : "lighter";
-      context.fillStyle = primary;
-      context.fillRect(0, 0, width, height);
-      context.fillStyle = secondary;
-      context.fillRect(0, 0, width, height);
-
-      context.globalAlpha = isLight ? 0.035 : 0.052;
-      context.strokeStyle = isLight ? "rgba(24, 72, 104, 0.24)" : "rgba(177, 226, 250, 0.28)";
+    function drawGravitationalSheen(now, isLight) {
+      const y = height * (0.58 + Math.sin(now * 0.00009) * 0.018);
+      context.globalCompositeOperation = isLight ? "source-over" : "screen";
+      context.globalAlpha = isLight ? 0.055 : 0.085;
+      context.strokeStyle = isLight ? "rgba(25, 82, 118, 0.36)" : "rgba(151, 218, 246, 0.34)";
       context.lineWidth = 1;
       context.beginPath();
-      const waveY = height * (0.54 + Math.sin(time * 0.00008) * 0.05);
-      context.moveTo(-40, waveY);
-      for (let x = -40; x <= width + 40; x += 44) {
-        const y = waveY + Math.sin(x * 0.007 + time * 0.0002) * 22 + driftY * height * 0.08;
-        context.lineTo(x + driftX * 38, y);
+      context.moveTo(-20, y);
+      for (let x = -20; x <= width + 20; x += 78) {
+        context.lineTo(x, y + Math.sin(x * 0.011 + now * 0.00022) * 10);
       }
       context.stroke();
       context.globalAlpha = 1;
     }
 
     function render(now) {
-      const isLight = document.documentElement.dataset.theme === "light";
-      const delta = Math.min(32, now - lastFrame || 16.67);
-      const step = reduceMotion ? 0.28 : delta / 16.67;
+      if (document.hidden) {
+        lastFrame = now;
+        frame = window.requestAnimationFrame(render);
+        return;
+      }
+
+      const nextTheme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+      const isLight = nextTheme === "light";
+      if (nextTheme !== currentTheme) {
+        currentTheme = nextTheme;
+        renderBackdrop(isLight);
+      }
+
+      const delta = Math.min(34, now - lastFrame || 16.67);
+      const step = reduceMotion ? 0.18 : delta / 16.67;
       lastFrame = now;
 
-      pointer.x += (pointer.targetX - pointer.x) * 0.18;
-      pointer.y += (pointer.targetY - pointer.y) * 0.18;
-      pointer.speed *= 0.92;
+      pointer.x += (pointer.targetX - pointer.x) * 0.12;
+      pointer.y += (pointer.targetY - pointer.y) * 0.12;
+      pointer.speed *= 0.9;
 
       context.clearRect(0, 0, width, height);
-      drawNebula(now, isLight);
+      context.drawImage(backdrop, 0, 0, width, height);
+      if (!reduceMotion) drawGravitationalSheen(now, isLight);
 
-      const fieldRadius = Math.min(340, Math.max(190, width * 0.24));
+      const fieldRadius = Math.min(260, Math.max(150, width * 0.18));
       const fieldRadiusSq = fieldRadius * fieldRadius;
-      const parallaxX = pointer.active ? ((pointer.x - width / 2) / Math.max(width, 1)) * 22 : 0;
-      const parallaxY = pointer.active ? ((pointer.y - height / 2) / Math.max(height, 1)) * 16 : 0;
-      const pointerEnergy = Math.min(1.8, pointer.speed / 34);
+      const parallaxX = pointer.active ? ((pointer.x - width / 2) / Math.max(width, 1)) * 12 : 0;
+      const parallaxY = pointer.active ? ((pointer.y - height / 2) / Math.max(height, 1)) * 8 : 0;
+      const pointerEnergy = Math.min(1.2, pointer.speed / 42);
 
-      context.globalCompositeOperation = isLight ? "source-over" : "lighter";
+      context.globalCompositeOperation = isLight ? "source-over" : "screen";
 
-      particles.forEach((particle, index) => {
-        const depth = particle.z * particle.z;
+      dust.forEach((particle, index) => {
+        const depth = particle.depth;
         const noiseX =
-          Math.sin(now * particle.driftSpeed + particle.phase) * (3 + depth * 16) +
-          Math.sin(now * 0.00009 + particle.phase * 1.7) * (2 + depth * 8);
+          Math.sin(now * particle.speed + particle.phase) * particle.driftX +
+          parallaxX * (depth - 0.18);
         const noiseY =
-          Math.cos(now * particle.driftSpeed * 0.86 + particle.phase) * (3 + depth * 12) +
-          Math.sin(now * 0.00007 + particle.phase * 2.1) * (2 + depth * 6);
-        const targetX = particle.homeX + noiseX + parallaxX * (depth - 0.16);
-        const targetY = particle.homeY + noiseY + parallaxY * (depth - 0.16);
-        const homeForce = 0.001 + (1 - depth) * 0.00038;
-
-        particle.vx += (targetX - particle.x) * homeForce * step;
-        particle.vy += (targetY - particle.y) * homeForce * step;
+          Math.cos(now * particle.speed * 0.82 + particle.phase) * particle.driftY +
+          parallaxY * (depth - 0.18);
+        let x = particle.homeX + noiseX;
+        let y = particle.homeY + noiseY;
 
         if (pointer.active && !reduceMotion) {
-          const dx = pointer.x - particle.x;
-          const dy = pointer.y - particle.y;
+          const dx = pointer.x - x;
+          const dy = pointer.y - y;
           const distanceSq = dx * dx + dy * dy;
 
           if (distanceSq < fieldRadiusSq) {
-            const distance = Math.max(Math.sqrt(distanceSq), 0.01);
-            const influence = (1 - distance / fieldRadius) ** 2;
-            const nx = dx / distance;
-            const ny = dy / distance;
-            const force = influence * (0.11 + depth * 0.28) * (1 + pointerEnergy * 0.38);
-
-            if (distance < fieldRadius * 0.28) {
-              particle.vx -= nx * force * 1.8 * step;
-              particle.vy -= ny * force * 1.8 * step;
-            } else if (distance < fieldRadius * 0.62) {
-              particle.vx += (-ny * particle.orbit + nx * 0.08) * force * 1.55 * step;
-              particle.vy += (nx * particle.orbit + ny * 0.08) * force * 1.55 * step;
-            } else {
-              particle.vx += nx * force * 0.95 * step;
-              particle.vy += ny * force * 0.95 * step;
-            }
+            const distance = Math.max(Math.sqrt(distanceSq), 0.001);
+            const influence = (1 - distance / fieldRadius) * (1 + pointerEnergy * 0.2);
+            x -= (dx / distance) * influence * depth * 12;
+            y -= (dy / distance) * influence * depth * 12;
           }
         }
 
-        particle.vx *= Math.pow(0.895 - depth * 0.028, step);
-        particle.vy *= Math.pow(0.895 - depth * 0.028, step);
-        particle.x += particle.vx * step;
-        particle.y += particle.vy * step;
-
-        const twinkle = reduceMotion ? 0 : Math.sin(now * 0.0011 + particle.phase) * 0.055;
-        const alpha = Math.max(0.025, particle.alpha + twinkle);
-        const radius = particle.radius * (0.78 + depth * 0.72);
-        const haloRadius = radius * (index % 17 === 0 ? 5.8 : 3.15);
-
-        if (index % 3 !== 0) {
-          context.beginPath();
-          context.arc(particle.x, particle.y, haloRadius, 0, Math.PI * 2);
-          context.fillStyle = isLight
-            ? `hsla(${particle.hue}, 42%, 34%, ${alpha * 0.045})`
-            : `hsla(${particle.hue}, 82%, 72%, ${alpha * 0.085})`;
-          context.fill();
-        }
+        const twinkle = reduceMotion ? 0 : Math.sin(now * 0.0007 + particle.phase) * 0.035;
+        const alpha = Math.max(0.035, particle.alpha + twinkle);
+        const radius = particle.radius * (0.82 + depth * 0.34);
 
         context.beginPath();
-        context.arc(particle.x, particle.y, radius, 0, Math.PI * 2);
+        context.arc(x, y, radius, 0, Math.PI * 2);
         context.fillStyle = isLight
-          ? `hsla(${particle.hue}, 38%, 23%, ${alpha * 0.7})`
-          : `hsla(${particle.hue}, 92%, 88%, ${alpha})`;
+          ? `hsla(${particle.hue}, 42%, 28%, ${alpha * 0.64})`
+          : `hsla(${particle.hue}, 88%, 86%, ${alpha})`;
         context.fill();
 
-        if (index % 31 === 0) {
+        if (index % 29 === 0) {
           context.beginPath();
-          context.arc(particle.x, particle.y, radius * 0.38, 0, Math.PI * 2);
-          context.fillStyle = isLight ? "rgba(255, 255, 255, 0.45)" : "rgba(255, 255, 255, 0.8)";
+          context.arc(x, y, radius * 2.8, 0, Math.PI * 2);
+          context.fillStyle = isLight ? "rgba(43, 105, 139, 0.045)" : "rgba(151, 218, 246, 0.08)";
           context.fill();
         }
       });
@@ -431,14 +443,19 @@ function useAtmosphere(canvasRef) {
 
     resize();
     render(lastFrame);
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", scheduleResize);
     window.addEventListener("pointermove", movePointer, { passive: true });
     window.addEventListener("pointerleave", leavePointer);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    motionQuery.addEventListener("change", handleMotionChange);
 
     return () => {
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", scheduleResize);
       window.removeEventListener("pointermove", movePointer);
       window.removeEventListener("pointerleave", leavePointer);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      motionQuery.removeEventListener("change", handleMotionChange);
+      window.cancelAnimationFrame(resizeFrame);
       window.cancelAnimationFrame(frame);
     };
   }, [canvasRef]);

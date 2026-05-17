@@ -1,16 +1,19 @@
 :root {
   color-scheme: dark;
-  --ink: #eef5fb;
-  --muted: #9faec1;
-  --line: rgba(228, 239, 255, 0.13);
-  --glass: rgba(10, 15, 28, 0.58);
-  --glass-strong: rgba(13, 20, 35, 0.72);
-  --void: #02040a;
-  --control-bg: rgba(10, 15, 28, 0.52);
-  --control-border: rgba(232, 244, 255, 0.16);
-  --control-shadow: rgba(0, 0, 0, 0.2);
-  --icon: rgba(221, 237, 248, 0.72);
-  --focus: rgba(183, 222, 246, 0.9);
+  --ink: #f2f8ff;
+  --muted: #9dacc1;
+  --line: rgba(203, 231, 255, 0.15);
+  --glass: rgba(8, 14, 27, 0.62);
+  --glass-strong: rgba(12, 20, 36, 0.82);
+  --void: #02040b;
+  --control-bg: rgba(8, 14, 27, 0.58);
+  --control-border: rgba(214, 239, 255, 0.18);
+  --control-shadow: rgba(0, 0, 0, 0.28);
+  --icon: rgba(210, 232, 247, 0.74);
+  --focus: rgba(152, 220, 247, 0.92);
+  --aurora: rgba(65, 177, 214, 0.34);
+  --lensing: rgba(141, 119, 220, 0.2);
+  --link-glow: rgba(68, 181, 224, 0.22);
   --drift-x: 0;
   --drift-y: 0;
   --near-x: 0;
@@ -24,16 +27,19 @@
 :root[data-theme="light"] {
   color-scheme: light;
   --ink: #07101e;
-  --muted: #526172;
+  --muted: #4c5e72;
   --line: rgba(13, 31, 52, 0.14);
-  --glass: rgba(247, 251, 255, 0.64);
-  --glass-strong: rgba(255, 255, 255, 0.78);
+  --glass: rgba(247, 252, 255, 0.68);
+  --glass-strong: rgba(255, 255, 255, 0.86);
   --void: #eef5fb;
-  --control-bg: rgba(247, 251, 255, 0.68);
+  --control-bg: rgba(247, 252, 255, 0.74);
   --control-border: rgba(16, 42, 70, 0.14);
   --control-shadow: rgba(42, 72, 104, 0.13);
   --icon: rgba(15, 35, 56, 0.62);
   --focus: rgba(32, 103, 151, 0.62);
+  --aurora: rgba(51, 126, 166, 0.18);
+  --lensing: rgba(92, 103, 170, 0.12);
+  --link-glow: rgba(38, 111, 151, 0.13);
 }
 
 * {
@@ -86,38 +92,39 @@ button:focus-visible {
   place-items: center;
   padding: 2rem 1rem;
   background:
-    radial-gradient(ellipse at calc(15% + var(--far-x) * 8vw) calc(8% + var(--far-y) * 5vh), rgba(103, 155, 194, 0.16), transparent 26rem),
-    radial-gradient(ellipse at calc(92% - var(--mid-x) * 9vw) calc(72% - var(--mid-y) * 6vh), rgba(54, 75, 132, 0.18), transparent 28rem),
-    linear-gradient(155deg, #010208 0%, #040916 38%, #07111f 68%, #02040a 100%);
+    radial-gradient(ellipse at calc(18% + var(--far-x) * 6vw) calc(18% + var(--far-y) * 4vh), rgba(49, 147, 189, 0.16), transparent 30rem),
+    radial-gradient(ellipse at calc(80% - var(--mid-x) * 7vw) calc(70% - var(--mid-y) * 5vh), rgba(93, 68, 163, 0.13), transparent 32rem),
+    radial-gradient(ellipse at 48% 48%, rgba(8, 29, 57, 0.48), transparent 35rem),
+    linear-gradient(150deg, #01030a 0%, #030716 34%, #071326 67%, #02040b 100%);
   isolation: isolate;
 }
 
 :root[data-theme="light"] .identity-stage {
   background:
-    radial-gradient(ellipse at calc(12% + var(--far-x) * 8vw) calc(10% + var(--far-y) * 5vh), rgba(70, 131, 172, 0.16), transparent 28rem),
-    radial-gradient(ellipse at calc(92% - var(--mid-x) * 9vw) calc(76% - var(--mid-y) * 6vh), rgba(111, 126, 172, 0.16), transparent 30rem),
-    linear-gradient(155deg, #f7fbff 0%, #edf5fb 38%, #e4eff8 68%, #f9fcff 100%);
+    radial-gradient(ellipse at calc(16% + var(--far-x) * 5vw) calc(16% + var(--far-y) * 4vh), rgba(63, 136, 176, 0.13), transparent 30rem),
+    radial-gradient(ellipse at calc(82% - var(--mid-x) * 6vw) calc(72% - var(--mid-y) * 5vh), rgba(100, 112, 172, 0.11), transparent 32rem),
+    linear-gradient(150deg, #fbfdff 0%, #edf6fc 42%, #e3edf7 72%, #f9fcff 100%);
 }
 
 .identity-stage::before {
   position: absolute;
-  inset: -20%;
+  inset: -16%;
   z-index: -5;
   background:
-    radial-gradient(ellipse at calc(14% + var(--far-x) * 4vw) calc(18% + var(--far-y) * 3vh), rgba(80, 150, 185, 0.1), transparent 30rem),
-    radial-gradient(ellipse at 82% 18%, rgba(147, 198, 224, 0.045), transparent 24rem);
-  filter: blur(14px);
-  opacity: 0.9;
-  transform: translate3d(calc(var(--far-x) * -0.8rem), calc(var(--far-y) * -0.6rem), 0);
+    radial-gradient(ellipse at calc(22% + var(--far-x) * 3vw) calc(28% + var(--far-y) * 3vh), var(--aurora), transparent 34rem),
+    radial-gradient(ellipse at calc(78% - var(--far-x) * 2vw) calc(38% - var(--far-y) * 2vh), var(--lensing), transparent 30rem),
+    linear-gradient(105deg, transparent 22%, rgba(210, 240, 255, 0.035) 48%, transparent 66%);
+  filter: blur(22px);
+  opacity: 0.76;
+  transform: translate3d(calc(var(--far-x) * -0.65rem), calc(var(--far-y) * -0.48rem), 0);
   content: "";
 }
 
 :root[data-theme="light"] .identity-stage::before {
   background:
-    radial-gradient(ellipse at calc(14% + var(--far-x) * 4vw) calc(18% + var(--far-y) * 3vh), rgba(54, 124, 166, 0.09), transparent 30rem),
-    radial-gradient(ellipse at 82% 18%, rgba(42, 112, 156, 0.048), transparent 23rem);
-  filter: blur(16px);
-  opacity: 0.82;
+    radial-gradient(ellipse at calc(22% + var(--far-x) * 3vw) calc(28% + var(--far-y) * 3vh), rgba(55, 127, 165, 0.11), transparent 34rem),
+    radial-gradient(ellipse at calc(78% - var(--far-x) * 2vw) calc(38% - var(--far-y) * 2vh), rgba(94, 104, 165, 0.09), transparent 30rem);
+  opacity: 0.68;
 }
 
 .identity-stage::after {
@@ -126,39 +133,35 @@ button:focus-visible {
   z-index: 8;
   pointer-events: none;
   background-image:
-    linear-gradient(115deg, rgba(255, 255, 255, 0.028), transparent 24%, rgba(255, 255, 255, 0.014) 42%, transparent 62%),
-    repeating-radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.026) 0 1px, transparent 1px 5px);
-  background-size: 460px 460px, 13px 13px;
+    radial-gradient(circle at 50% 50%, transparent 0 42%, rgba(0, 0, 0, 0.35) 100%),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.028), transparent 24%, rgba(139, 215, 247, 0.018) 45%, transparent 66%),
+    repeating-radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.038) 0 1px, transparent 1px 7px);
+  background-size: auto, 520px 520px, 17px 17px;
   mix-blend-mode: soft-light;
-  opacity: 0.34;
+  opacity: 0.46;
   content: "";
 }
 
 :root[data-theme="light"] .identity-stage::after {
   background-image:
-    linear-gradient(115deg, rgba(11, 28, 46, 0.035), transparent 24%, rgba(11, 28, 46, 0.018) 42%, transparent 62%),
-    repeating-radial-gradient(circle at 12% 18%, rgba(11, 28, 46, 0.035) 0 1px, transparent 1px 5px);
+    radial-gradient(circle at 50% 50%, transparent 0 45%, rgba(65, 91, 120, 0.16) 100%),
+    linear-gradient(115deg, rgba(11, 28, 46, 0.03), transparent 24%, rgba(11, 28, 46, 0.016) 42%, transparent 62%),
+    repeating-radial-gradient(circle at 12% 18%, rgba(11, 28, 46, 0.03) 0 1px, transparent 1px 8px);
   mix-blend-mode: multiply;
-  opacity: 0.22;
+  opacity: 0.28;
 }
 
 .particle-canvas {
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.78;
+  opacity: 0.88;
   pointer-events: none;
+  transform: translateZ(0);
 }
 
 :root[data-theme="light"] .particle-canvas {
-  opacity: 0.62;
-}
-
-.ambient-system {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
+  opacity: 0.66;
 }
 
 .theme-toggle,
@@ -167,11 +170,11 @@ button:focus-visible {
   z-index: 12;
   border: 1px solid var(--control-border);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.018)),
+    linear-gradient(140deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.018)),
     var(--control-bg);
-  box-shadow: 0 14px 40px var(--control-shadow);
+  box-shadow: 0 16px 44px var(--control-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   color: var(--ink);
-  backdrop-filter: blur(18px) saturate(1.08);
+  backdrop-filter: blur(20px) saturate(1.18);
 }
 
 .theme-toggle {
@@ -184,9 +187,10 @@ button:focus-visible {
   border-radius: 999px;
   cursor: pointer;
   transition:
-    transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 180ms ease,
-    background 180ms ease;
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
 }
 
 .theme-toggle svg {
@@ -195,7 +199,8 @@ button:focus-visible {
 }
 
 .theme-toggle:hover {
-  border-color: rgba(191, 226, 246, 0.38);
+  border-color: rgba(169, 227, 251, 0.44);
+  box-shadow: 0 18px 48px var(--control-shadow), 0 0 30px var(--link-glow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   transform: translateY(-1px);
 }
 
@@ -230,371 +235,30 @@ button:focus-visible {
   letter-spacing: 0.04em;
 }
 
-.coordinate-plane {
-  position: absolute;
-  display: block;
-  opacity: 0.18;
-  mask-image: radial-gradient(ellipse, black 0%, black 38%, transparent 72%);
-}
-
-.coordinate-plane-a {
-  left: -8vw;
-  top: 7vh;
-  width: 58vw;
-  height: 58vh;
-  background-image:
-    linear-gradient(rgba(174, 214, 238, 0.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(174, 214, 238, 0.14) 1px, transparent 1px);
-  background-size: 34px 34px;
-  transform: perspective(900px) rotateX(58deg) rotateZ(-14deg) translate3d(calc(var(--mid-x) * -1rem), calc(var(--mid-y) * -0.8rem), 0);
-}
-
-.coordinate-plane-b {
-  right: -12vw;
-  bottom: -6vh;
-  width: 54vw;
-  height: 46vh;
-  background-image:
-    linear-gradient(rgba(174, 214, 238, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(174, 214, 238, 0.1) 1px, transparent 1px);
-  background-size: 42px 42px;
-  transform: perspective(900px) rotateX(64deg) rotateZ(18deg) translate3d(calc(var(--mid-x) * 0.8rem), calc(var(--mid-y) * 0.55rem), 0);
-}
-
-.orbital-arc,
-.gravity-ring {
-  position: absolute;
-  display: block;
-  border: 1px solid rgba(173, 214, 238, 0.13);
-  border-radius: 50%;
-}
-
-.orbital-arc::after,
-.gravity-ring::after {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border: 1px solid rgba(222, 241, 252, 0.6);
-  border-radius: 999px;
-  background: rgba(210, 235, 248, 0.32);
-  content: "";
-}
-
-.orbital-arc-a {
-  left: 12vw;
-  top: 17vh;
-  width: min(54vw, 620px);
-  height: min(26vw, 300px);
-  border-color: rgba(174, 214, 238, 0.12);
-  transform: rotate(-17deg) translate3d(calc(var(--mid-x) * -0.7rem), calc(var(--mid-y) * -0.4rem), 0);
-  animation: orbit-drift-a 26s linear infinite;
-}
-
-.orbital-arc-a::after {
-  left: 68%;
-  top: -3px;
-}
-
-.orbital-arc-b {
-  right: 7vw;
-  top: 22vh;
-  width: min(44vw, 520px);
-  height: min(18vw, 220px);
-  border-color: rgba(153, 171, 230, 0.1);
-  transform: rotate(24deg) translate3d(calc(var(--mid-x) * 0.8rem), calc(var(--mid-y) * -0.5rem), 0);
-  animation: orbit-drift-b 31s linear infinite;
-}
-
-.orbital-arc-b::after {
-  left: 18%;
-  bottom: -3px;
-}
-
-.gravity-ring-a {
-  left: 14vw;
-  bottom: 16vh;
-  width: 9rem;
-  height: 9rem;
-  opacity: 0.48;
-  transform: translate3d(calc(var(--far-x) * -0.45rem), calc(var(--far-y) * 0.35rem), 0);
-}
-
-.gravity-ring-a::after {
-  right: 18%;
-  top: 12%;
-}
-
-.gravity-ring-b {
-  right: 18vw;
-  top: 14vh;
-  width: 6.5rem;
-  height: 6.5rem;
-  opacity: 0.36;
-  transform: translate3d(calc(var(--far-x) * 0.4rem), calc(var(--far-y) * -0.3rem), 0);
-}
-
-.gravity-ring-b::after {
-  left: 10%;
-  top: 50%;
-}
-
-.constellation-line {
-  position: absolute;
-  display: block;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(185, 218, 238, 0.18), transparent);
-  transform-origin: left center;
-}
-
-.constellation-line::before,
-.constellation-line::after {
-  position: absolute;
-  top: -2px;
-  width: 4px;
-  height: 4px;
-  border-radius: 999px;
-  background: rgba(208, 232, 246, 0.5);
-  content: "";
-}
-
-.constellation-line::before {
-  left: 0;
-}
-
-.constellation-line::after {
-  right: 0;
-}
-
-.constellation-line-a {
-  left: 18vw;
-  top: 31vh;
-  width: 8rem;
-  transform: translate3d(calc(var(--far-x) * -0.35rem), calc(var(--far-y) * -0.25rem), 0) rotate(18deg);
-}
-
-.constellation-line-b {
-  right: 20vw;
-  bottom: 32vh;
-  width: 7rem;
-  transform: translate3d(calc(var(--far-x) * 0.32rem), calc(var(--far-y) * 0.28rem), 0) rotate(-28deg);
-}
-
-.constellation-line-c {
-  right: 32vw;
-  top: 18vh;
-  width: 5rem;
-  transform: translate3d(calc(var(--far-x) * 0.24rem), calc(var(--far-y) * -0.22rem), 0) rotate(42deg);
-}
-
-.science-marker {
-  position: absolute;
-  display: block;
-  width: 28px;
-  height: 1px;
-  background: rgba(205, 229, 243, 0.22);
-}
-
-.science-marker::before {
-  position: absolute;
-  left: 50%;
-  top: -7px;
-  width: 1px;
-  height: 15px;
-  background: rgba(205, 229, 243, 0.18);
-  content: "";
-}
-
-.science-marker-a {
-  left: 24vw;
-  top: 18vh;
-}
-
-.science-marker-b {
-  right: 22vw;
-  top: 58vh;
-  transform: rotate(90deg);
-}
-
-.science-marker-c {
-  left: 35vw;
-  bottom: 18vh;
-  transform: rotate(-20deg);
-}
-
-.radial-coordinate,
-.refraction-line,
-.haze-field {
-  position: absolute;
-  display: block;
-}
-
-.radial-coordinate {
-  border: 1px solid rgba(183, 221, 242, 0.09);
-  border-radius: 999px;
-  opacity: 0.72;
-}
-
-.radial-coordinate::before,
-.radial-coordinate::after {
-  position: absolute;
-  inset: 50% auto auto 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(190, 223, 242, 0.12), transparent);
-  content: "";
-}
-
-.radial-coordinate::after {
-  transform: rotate(90deg);
-}
-
-.radial-coordinate-a {
-  left: 7vw;
-  top: 11vh;
-  width: min(34vw, 25rem);
-  height: min(34vw, 25rem);
-  mask-image: radial-gradient(circle, transparent 0 44%, black 45%, black 54%, transparent 72%);
-  transform: translate3d(calc(var(--mid-x) * -0.65rem), calc(var(--mid-y) * -0.42rem), 0) rotate(-12deg);
-}
-
-.radial-coordinate-b {
-  right: 6vw;
-  bottom: 8vh;
-  width: min(30vw, 21rem);
-  height: min(30vw, 21rem);
-  opacity: 0.5;
-  mask-image: radial-gradient(circle, transparent 0 42%, black 43%, black 51%, transparent 70%);
-  transform: translate3d(calc(var(--mid-x) * 0.56rem), calc(var(--mid-y) * 0.46rem), 0) rotate(17deg);
-}
-
-.refraction-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(234, 247, 255, 0.2), rgba(135, 197, 231, 0.04), transparent);
-  filter: drop-shadow(0 0 14px rgba(142, 213, 244, 0.08));
-  opacity: 0.42;
-}
-
-.refraction-line-a {
-  left: 8vw;
-  top: 23vh;
-  width: 31vw;
-  transform: translate3d(calc(var(--near-x) * -0.42rem), calc(var(--near-y) * -0.3rem), 0) rotate(-18deg);
-}
-
-.refraction-line-b {
-  right: 9vw;
-  bottom: 23vh;
-  width: 35vw;
-  opacity: 0.34;
-  transform: translate3d(calc(var(--near-x) * 0.48rem), calc(var(--near-y) * 0.32rem), 0) rotate(14deg);
-}
-
-.haze-field {
-  border-radius: 999px;
-  background:
-    radial-gradient(ellipse at 45% 44%, rgba(116, 183, 218, 0.085), transparent 46%),
-    radial-gradient(ellipse at 60% 55%, rgba(121, 111, 196, 0.055), transparent 58%);
-  filter: blur(20px);
-  mix-blend-mode: screen;
-  opacity: 0.52;
-}
-
-.haze-field-a {
-  left: -8vw;
-  top: 8vh;
-  width: 44vw;
-  height: 28vh;
-  transform: translate3d(calc(var(--far-x) * -0.85rem), calc(var(--far-y) * -0.52rem), 0) rotate(-10deg);
-}
-
-.haze-field-b {
-  right: -10vw;
-  bottom: 6vh;
-  width: 46vw;
-  height: 30vh;
-  opacity: 0.42;
-  transform: translate3d(calc(var(--far-x) * 0.82rem), calc(var(--far-y) * 0.58rem), 0) rotate(12deg);
-}
-
-:root[data-theme="light"] .coordinate-plane {
-  opacity: 0.14;
-}
-
-:root[data-theme="light"] .orbital-arc,
-:root[data-theme="light"] .gravity-ring {
-  border-color: rgba(22, 73, 108, 0.12);
-}
-
-:root[data-theme="light"] .constellation-line {
-  background: linear-gradient(90deg, transparent, rgba(22, 73, 108, 0.14), transparent);
-}
-
-:root[data-theme="light"] .constellation-line::before,
-:root[data-theme="light"] .constellation-line::after {
-  background: rgba(22, 73, 108, 0.34);
-}
-
-:root[data-theme="light"] .science-marker {
-  background: rgba(22, 73, 108, 0.16);
-}
-
-:root[data-theme="light"] .science-marker::before {
-  background: rgba(22, 73, 108, 0.14);
-}
-
-:root[data-theme="light"] .radial-coordinate {
-  border-color: rgba(22, 73, 108, 0.12);
-  opacity: 0.55;
-}
-
-:root[data-theme="light"] .radial-coordinate::before,
-:root[data-theme="light"] .radial-coordinate::after {
-  background: linear-gradient(90deg, transparent, rgba(22, 73, 108, 0.12), transparent);
-}
-
-:root[data-theme="light"] .refraction-line {
-  background: linear-gradient(90deg, transparent, rgba(22, 73, 108, 0.16), rgba(72, 125, 160, 0.04), transparent);
-  filter: none;
-}
-
-:root[data-theme="light"] .haze-field {
-  background:
-    radial-gradient(ellipse at 45% 44%, rgba(60, 126, 166, 0.08), transparent 46%),
-    radial-gradient(ellipse at 60% 55%, rgba(99, 110, 170, 0.05), transparent 58%);
-  mix-blend-mode: multiply;
-}
-
-.light-band {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(102deg, transparent 12%, rgba(236, 248, 255, 0.075) 46%, transparent 60%);
-  mix-blend-mode: screen;
-  opacity: 0.2;
-  transform: translateX(-130%) skewX(-16deg);
-  animation: sweep 9.5s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-}
-
 .hub {
   position: relative;
   z-index: 5;
   display: grid;
-  width: min(100%, 430px);
+  width: min(100%, 438px);
   justify-items: center;
-  padding: 1.5rem 0;
-  transform: translate3d(calc(var(--near-x) * -0.14rem), calc(var(--near-y) * -0.1rem), 0);
+  padding: 1.35rem 0;
+  transform: translate3d(calc(var(--near-x) * -0.1rem), calc(var(--near-y) * -0.07rem), 0);
+  will-change: transform;
 }
 
 .profile-mark {
   display: grid;
-  width: 5rem;
-  height: 5rem;
+  width: 5.15rem;
+  height: 5.15rem;
   place-items: center;
   overflow: hidden;
   border: 1px solid var(--control-border);
-  border-radius: 24px;
-  background: var(--control-bg);
-  box-shadow: 0 18px 58px var(--control-shadow);
-  backdrop-filter: blur(18px);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.018)),
+    var(--control-bg);
+  box-shadow: 0 20px 64px var(--control-shadow), 0 0 38px rgba(68, 181, 224, 0.08);
+  backdrop-filter: blur(20px) saturate(1.12);
   animation: element-enter 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -617,16 +281,16 @@ button:focus-visible {
   height: 0.5rem;
   border: 1px solid rgba(197, 235, 255, 0.88);
   border-radius: 999px;
-  background: #a9e9ff;
-  box-shadow: 0 0 0 4px rgba(130, 214, 255, 0.08);
+  background: #9ee9ff;
+  box-shadow: 0 0 0 4px rgba(130, 214, 255, 0.08), 0 0 18px rgba(130, 214, 255, 0.42);
 }
 
 h1 {
   margin: 0;
   color: var(--ink);
   font-family: "Geist", "Avenir Next", system-ui, sans-serif;
-  font-size: 2.3rem;
-  font-weight: 500;
+  font-size: 2.38rem;
+  font-weight: 560;
   letter-spacing: 0;
   line-height: 1;
   text-align: center;
@@ -636,8 +300,8 @@ h1 {
   margin: 0.65rem 0 0;
   color: var(--muted);
   font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  font-weight: 450;
+  letter-spacing: 0.01em;
   line-height: 1.35;
   text-align: center;
   animation: element-enter 760ms cubic-bezier(0.16, 1, 0.3, 1) 130ms both;
@@ -756,66 +420,6 @@ h1 {
     border-radius: 18px;
   }
 
-  .coordinate-plane-a {
-    left: -28vw;
-    width: 96vw;
-    opacity: 0.12;
-  }
-
-  .coordinate-plane-b {
-    right: -36vw;
-    width: 92vw;
-    opacity: 0.1;
-  }
-
-  .orbital-arc-a {
-    left: -18vw;
-    width: 88vw;
-    height: 34vw;
-    opacity: 0.62;
-  }
-
-  .orbital-arc-b,
-  .constellation-line-c,
-  .science-marker-b {
-    display: none;
-  }
-
-  .gravity-ring-a {
-    left: 5vw;
-    bottom: 12vh;
-    width: 7rem;
-    height: 7rem;
-  }
-
-  .gravity-ring-b {
-    right: 4vw;
-    top: 13vh;
-  }
-
-  .radial-coordinate-a {
-    left: -24vw;
-    top: 8vh;
-    width: 78vw;
-    height: 78vw;
-    opacity: 0.48;
-  }
-
-  .radial-coordinate-b,
-  .refraction-line-b {
-    display: none;
-  }
-
-  .haze-field-a {
-    left: -28vw;
-    width: 86vw;
-  }
-
-  .haze-field-b {
-    right: -34vw;
-    width: 88vw;
-  }
-
   .theme-toggle {
     right: max(0.8rem, env(safe-area-inset-right));
     top: max(0.8rem, env(safe-area-inset-top));
@@ -838,38 +442,6 @@ h1 {
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes sweep {
-  0%,
-  34% {
-    transform: translateX(-130%) skewX(-16deg);
-  }
-
-  78%,
-  100% {
-    transform: translateX(130%) skewX(-16deg);
-  }
-}
-
-@keyframes orbit-drift-a {
-  from {
-    rotate: 0deg;
-  }
-
-  to {
-    rotate: 360deg;
-  }
-}
-
-@keyframes orbit-drift-b {
-  from {
-    rotate: 0deg;
-  }
-
-  to {
-    rotate: -360deg;
   }
 }
 
