@@ -1,0 +1,13 @@
+cv:
+  name: Declan Chan
+  label: Designer and Developer
+  email: hi@d3c.me
+  location: Toronto, Canada
+  image: ""
+  summary: Designer and developer focused on creating thoughtful digital experiences.
+
+  social_networks:
+    - network: GitHub
+      username: declanwhchan
+
+  sections: {}
