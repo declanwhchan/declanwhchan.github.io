@@ -1,144 +1,142 @@
-Basics:
-  name: "Declan Chan"
-  website: "declanwhchan.github.io"
-  profiles:
-    - network: "LinkedIn"
-      username: "declanwhchan"
-    - network: "GitHub"
-      username: "declanwhchan"
+cv:
+  name: Declan Chan
 
-Education:
-  - institution: "University of Toronto"
-    studyType: "BASc"
-    area: "Engineering Science"
-    startDate: "2025"
-    endDate: "Present"
-    highlights:
-      - "Dean's Honours List (all semesters)"
+  sections:
+    Basics:
+      - label: Name
+        details: Declan Chan
+      - label: Website
+        details: "[declanwhchan.github.io](https://declanwhchan.github.io)"
+      - label: LinkedIn
+        details: "[declanwhchan](https://www.linkedin.com/in/declanwhchan/)"
+      - label: GitHub
+        details: "[declanwhchan](https://github.com/declanwhchan)"
 
-  - institution: "Maple High School"
-    studyType: "IB Diploma Programme"
-    startDate: "2021"
-    endDate: "2025"
-    highlights:
-      - "IB Score: 45/45"
-      - "OSSD Top 6: 99.67%"
-      - "Director's Achievement Award"
+    Education:
+      - institution: University of Toronto
+        degree: BASc
+        area: Engineering Science
+        start_date: 2025
+        end_date: present
+        highlights:
+          - Dean's Honours List (all semesters)
 
-Technical Skills:
-  - name: "Languages"
-    keywords:
-      - "Python"
-      - "C"
-      - "MATLAB"
-      - "Bash"
+      - institution: Maple High School
+        area: IB Diploma Programme
+        start_date: 2021
+        end_date: 2025
+        highlights:
+          - "IB Score: 45/45"
+          - "OSSD Top 6: 99.67%"
+          - Director's Achievement Award
 
-  - name: "Design"
-    keywords:
-      - "SolidWorks"
-      - "OnShape"
+    Technical Skills:
+      - label: Languages
+        details: Python, C, MATLAB, Bash
+      - label: Design
+        details: SolidWorks, OnShape
+      - label: Tools
+        details: Git, Linux, Slurm
 
-  - name: "Tools"
-    keywords:
-      - "Git"
-      - "Linux"
-      - "Slurm"
+    Experience:
+      - company: Autonomous Discovery of Alloys
+        position: Machine Learning Researcher
+        start_date: 2026
+        end_date: present
+        highlights:
+          - Designed experiments to evaluate the robustness of machine learning force fields.
+          - Benchmarked MLFF predictions against density functional theory calculations.
+          - Performed large-scale experiments on Canada's Fir HPC cluster.
 
-Experience:
-  - position: "Machine Learning Researcher"
-    organization: "Autonomous Discovery of Alloys"
-    startDate: "2026"
-    endDate: "Present"
-    highlights:
-      - "Designed experiments to evaluate the robustness of machine learning force fields."
-      - "Benchmarked MLFF predictions against density functional theory calculations."
-      - "Performed large-scale experiments on Canada's Fir HPC cluster."
+      - company: University of Toronto Aerospace Team
+        position: Space Systems Engineer
+        start_date: 2026
+        end_date: present
+        highlights:
+          - Developed software for CubeSat attitude determination and control systems.
+          - Developed Python modules for attitude dynamics and flight simulation.
+          - Simulated magnetic environments using a Helmholtz cage and MATLAB.
 
-  - position: "Space Systems Engineer"
-    organization: "University of Toronto Aerospace Team"
-    startDate: "2026"
-    endDate: "Present"
-    highlights:
-      - "Developed software for CubeSat attitude determination and control systems."
-      - "Developed Python modules for attitude dynamics and flight simulation."
-      - "Simulated magnetic environments using a Helmholtz cage and MATLAB."
+      - company: Robotics for Space Exploration
+        position: Mechanical Design Engineer
+        start_date: 2025
+        end_date: 2026
+        highlights:
+          - Designed robotic arm components using CAD for 3D modelling.
+          - Performed finite element analysis in SolidWorks Simulation to evaluate designs.
 
-  - position: "Mechanical Design Engineer"
-    organization: "Robotics for Space Exploration"
-    startDate: "2025"
-    endDate: "2026"
-    highlights:
-      - "Designed robotic arm components using CAD for 3D modelling."
-      - "Performed finite element analysis in SolidWorks Simulation to evaluate designs."
+      - company: Northern Karate Schools
+        position: Senior Instructor
+        start_date: 2021
+        end_date: present
+        highlights:
+          - "Yondan: Certified 4th Degree Black Belt."
+          - Gold medal at the Toronto International Tournament of Martial Arts Champions.
+          - Teach 100+ students each week through group and private lessons.
 
-  - position: "Senior Instructor"
-    organization: "Northern Karate Schools"
-    startDate: "2021"
-    endDate: "Present"
-    highlights:
-      - "Yondan: Certified 4th Degree Black Belt."
-      - "Gold medal at the Toronto International Tournament of Martial Arts Champions."
-      - "Teach 100+ students each week through group and private lessons."
+    Projects:
+      - name: Attacks Against Machine Learning Force Fields
+        date: 2026
+        highlights:
+          - Developed open-source software to generate first-order adversarial attacks against MLFFs.
+          - Built Python/PyTorch pipelines to process Materials Project and LiCOHPF datasets.
+          - Automated ASE relaxation, perturbation, and contour exploration workflows using Bash and Slurm.
 
-Projects:
-  - name: "Attacks Against Machine Learning Force Fields"
-    date: "2026"
-    highlights:
-      - "Developed open-source software to generate first-order adversarial attacks against MLFFs."
-      - "Built Python/PyTorch pipelines to process Materials Project and LiCOHPF datasets."
-      - "Automated ASE relaxation, perturbation, and contour exploration workflows using Bash and Slurm."
+      - name: GenAI Genesis Hackathon
+        date: 2026
+        highlights:
+          - Developed an interactive platform visualizing human disease progression.
+          - Implemented a RAG system trained on PubMed data via IBM watsonx.ai.
+          - Built an AI-powered 3D web application with React and three.js.
 
-  - name: "GenAI Genesis Hackathon"
-    date: "2026"
-    highlights:
-      - "Developed an interactive platform visualizing human disease progression."
-      - "Implemented a RAG system trained on PubMed data via IBM watsonx.ai."
-      - "Built an AI-powered 3D web application with React and three.js."
+      - name: CIV102 Bridge Project
+        date: 2025
+        highlights:
+          - Optimized structural performance and prototyped a matboard bridge using Python.
+          - Top 1 in the cohort and 2nd in the class of 2025.
 
-  - name: "CIV102 Bridge Project"
-    date: "2025"
-    highlights:
-      - "Optimized structural performance and prototyped a matboard bridge using Python."
-      - "Top 1 in the cohort and 2nd in the class of 2025."
+      - name: Astrophysics Research Project
+        start_date: 2024
+        end_date: 2025
+        highlights:
+          - Conducted data analysis and literature review on Yarkovsky effect orbital perturbations.
+          - Modelled thermal-radiation orbital drift and trajectories of several near-Earth asteroids.
 
-  - name: "Astrophysics Research Project"
-    startDate: "2024"
-    endDate: "2025"
-    highlights:
-      - "Conducted data analysis and literature review on Yarkovsky effect orbital perturbations."
-      - "Modelled thermal-radiation orbital drift and trajectories of several near-Earth asteroids."
+      - name: NFT Generation
+        start_date: 2021
+        end_date: 2022
+        highlights:
+          - Used the HashLips Art Engine to generate layered NFT artwork from image assets.
+          - Created and deployed NFTs on OpenSea.io using the Polygon Ethereum blockchain.
 
-  - name: "NFT Generation"
-    startDate: "2021"
-    endDate: "2022"
-    highlights:
-      - "Used the HashLips Art Engine to generate layered NFT artwork from image assets."
-      - "Created and deployed NFTs on OpenSea.io using the Polygon Ethereum blockchain."
+    ECs:
+      - name: Rubik's Cube Competitions
+        start_date: 2022
+        end_date: 2025
+        highlights:
+          - Top 90 in Canada for 3x3x3 fewest moves.
+          - Volunteered as a judge for the World Cube Association.
+          - Club President who taught beginners and organized school-wide competitions.
 
-ECs:
-  - title: "Rubik's Cube Competitions"
-    date: "2022--2025"
-    highlights:
-      - "Top 90 in Canada for 3x3x3 fewest moves."
-      - "Volunteered as a judge for the World Cube Association."
-      - "Club President who taught beginners and organized school-wide competitions."
+      - name: Varsity Volleyball
+        start_date: 2022
+        end_date: 2025
+        highlights:
+          - Team Captain in Grade 10 and 12.
+          - Tier 1 YRAA Championship junior varsity 2nd place.
+          - Tier 1 YRAA Championship senior varsity 2nd place.
 
-  - title: "Varsity Volleyball"
-    date: "2022--2025"
-    highlights:
-      - "Team Captain in Grade 10 and 12."
-      - "Tier 1 YRAA Championship junior varsity 2nd place."
-      - "Tier 1 YRAA Championship senior varsity 2nd place."
+      - name: Rep Volleyball
+        start_date: 2019
+        end_date: 2023
+        highlights:
+          - Team Captain and 2X MVP.
+          - Silver medal in Canada's 2023 Youth Nationals.
 
-  - title: "Rep Volleyball"
-    date: "2019--2023"
-    highlights:
-      - "Team Captain and 2X MVP."
-      - "Silver medal in Canada's 2023 Youth Nationals."
-
-  - title: "Music Performance"
-    date: "2014--2023"
-    highlights:
-      - "Theory and Instrumental: Level 10 RCM comprehensive certificate (First Class Honors)."
-      - "Level 10 RCM practical piano certificate (First Class Honors with Distinction)."
-      - "Level 8 RCM practical violin certificate (First Class Honors with Distinction)."
+      - name: Music Performance
+        start_date: 2014
+        end_date: 2023
+        highlights:
+          - "Theory and Instrumental: Level 10 RCM comprehensive certificate (First Class Honors)."
+          - Level 10 RCM practical piano certificate (First Class Honors with Distinction).
+          - Level 8 RCM practical violin certificate (First Class Honors with Distinction).

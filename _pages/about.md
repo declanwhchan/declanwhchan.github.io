@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Toronto, Ontario, Canada.
+subtitle: '<span id="toronto-time">Loading...</span>'
 
 profile:
   align: right
@@ -26,16 +26,12 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-<p class="toronto-clock" aria-live="polite">
-  <span id="toronto-time">Loading...</span>
-</p>
-
 <script>
   function updateTorontoTime() {
-    const now = new Date();
+    const element = document.getElementById("toronto-time");
 
-    document.getElementById("toronto-time").textContent =
-      new Intl.DateTimeFormat("en-CA", {
+    if (element) {
+      element.textContent = new Intl.DateTimeFormat("en-CA", {
         timeZone: "America/Toronto",
         weekday: "long",
         year: "numeric",
@@ -45,8 +41,9 @@ latest_posts:
         minute: "2-digit",
         second: "2-digit",
         timeZoneName: "short",
-        hour12: false
-      }).format(now);
+        hour12: false,
+      }).format(new Date());
+    }
   }
 
   updateTorontoTime();
