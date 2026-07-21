@@ -4,23 +4,22 @@ cv:
       - label: Name
         details: Declan Chan
       - label: Website
-        details: '<a href="https://declanwhchan.github.io" target="_blank" rel="noopener noreferrer">declanwhchan.github.io</a>'
+        details: https://declanwhchan.github.io/
       - label: LinkedIn
-        details: '<a href="https://www.linkedin.com/in/declanwhchan/" target="_blank" rel="noopener noreferrer">declanwhchan</a>'
+        details: https://www.linkedin.com/in/declanwhchan/
       - label: GitHub
-        details: '<a href="https://github.com/declanwhchan" target="_blank" rel="noopener noreferrer">declanwhchan</a>'
+        details: https://github.com/declanwhchan/
 
     Education:
       - institution: University of Toronto
-        degree: BASc
-        area: Engineering Science
+        degree: BASc in Engineering Science
         start_date: 2025
         end_date: present
         highlights:
           - Dean's Honours List (all semesters)
 
       - institution: Maple High School
-        area: IB Diploma Programme
+        degree: IB Diploma Programme
         start_date: 2021
         end_date: 2025
         highlights:
