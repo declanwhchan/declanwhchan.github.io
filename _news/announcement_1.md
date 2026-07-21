@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-New [website](declanwhchan.github.io) is officially live.
+New [website](https://declanwhchan.github.io) is officially live.

@@ -1,16 +1,14 @@
 cv:
-  name: Declan Chan
-
   sections:
     Basics:
       - label: Name
         details: Declan Chan
       - label: Website
-        details: "[declanwhchan.github.io](https://declanwhchan.github.io)"
+        details: [declanwhchan.github.io](https://declanwhchan.github.io)
       - label: LinkedIn
-        details: "[declanwhchan](https://www.linkedin.com/in/declanwhchan/)"
+        details: [declanwhchan](https://www.linkedin.com/in/declanwhchan/)
       - label: GitHub
-        details: "[declanwhchan](https://github.com/declanwhchan)"
+        details: [declanwhchan](https://github.com/declanwhchan)
 
     Education:
       - institution: University of Toronto
