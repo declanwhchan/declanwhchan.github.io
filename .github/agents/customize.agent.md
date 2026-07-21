@@ -27,7 +27,7 @@ If a request changes runtime behavior, route to the owning plugin repo instead o
 
 - `_config.yml`
 - `_data/*.yml`
-- `_pages/`, `_posts/`, `_projects/`, `_news/`, `_teachings/`
+- `_pages/`, `_posts/`, `_projects/`, `_news/`
 - `Gemfile`
 - `README.md`
 - `docs/INSTALL.md`, `docs/CUSTOMIZE.md`, `docs/FAQ.md`, `docs/CONTRIBUTING.md`, `docs/BOUNDARIES.md`

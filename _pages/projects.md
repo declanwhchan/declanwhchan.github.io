@@ -1,8 +1,12 @@
 ---
 layout: page
 title: projects
+_styles: |
+  h1 {
+    text-transform: capitalize;
+  }
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: A collection of projects.
 nav: true
 nav_order: 3
 display_categories: [work, fun]

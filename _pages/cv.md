@@ -1,12 +1,16 @@
 ---
 layout: cv
 permalink: /cv/
-title: CV
+title: cv
+_styles: |
+  h1 {
+    text-transform: capitalize;
+  }
 nav: true
-nav_order: 5
+nav_order: 2
 cv_pdf: /assets/pdf/ChanDeclanCV.pdf # you can also use external links here
 cv_format: rendercv # options: rendercv, jsonresume
-description: This is a description of the page. You can modify it in '_pages/cv.md'. You can also change or remove the top pdf download button.
+description: Last updated: 2026/07/21
 toc:
   sidebar: left
 ---

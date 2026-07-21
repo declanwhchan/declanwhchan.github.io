@@ -107,7 +107,6 @@ The project is structured as follows, focusing on the main components that you w
     │   └── 📄 resume.json: CV in JSON format (https://jsonresume.org/)
 ├── 📂 _bibliography/
 │   └── 📄 papers.bib: bibliography in BibTeX format
-├── 📂 _books/: contains the bookshelf pages
 ├── 📄 _config.yml: the configuration file of the template
 ├── 📂 _data/: contains some of the data used in the template
 │   ├── 📄 cv.yml: CV in YAML format, used when assets/json/resume.json is not found
@@ -115,7 +114,6 @@ The project is structured as follows, focusing on the main components that you w
 │   └── 📄 socials.yml: your social media and contact info in YAML format
 ├── 📂 _includes/: optional local override includes (default includes are gem-owned in `v1.x`)
 ├── 📂 _layouts/: optional local override layouts (default layouts are gem-owned in `v1.x`)
-├── 📂 _news/: the news that will appear in the news section in the about page
 ├── 📂 _pages/: contains the pages of the website
 |   └── 📄 404.md: 404 page (page not found)
 ├── 📂 _posts/: contains the blog posts
@@ -447,7 +445,7 @@ You can add news in the about page by adding new Markdown files in the [\_news](
 
 ## Adding Collections
 
-This Jekyll theme implements [collections](https://jekyllrb.com/docs/collections/) to let you break up your work into categories. The theme comes with three default collections: `news`, `projects`, and `books`. Items from the `news` collection are automatically displayed on the home page, while items from the `projects` collection are displayed on a responsive grid on the projects page, and items from the `books` collection are displayed on its own `bookshelf` page inside `submenus`.
+This Jekyll theme implements [collections](https://jekyllrb.com/docs/collections/) to let you break up your work into categories. The theme comes with three default collections: `news`, `projects`, and `books`. Items from the `news` collection are automatically displayed on the home page, while items from the `projects` collection are displayed on a responsive grid on the projects page, and items from the `books` collection are displayed on its own `bookshelf` page inside `more`.
 
 You can easily create your own collections for any type of content—teaching materials, courses, apps, short stories, or whatever suits your needs.
 
@@ -665,12 +663,6 @@ Custom fields (any field name you create) remain as **strings** and require expl
          - year
          - tags
          - categories
-     books:
-       enabled:
-         - year
-         - tags
-         - categories
-         - adaptations # Add your custom field here
        permalinks:
          year: "/:collection/:year/"
          tags: "/:collection/:type/:name/"

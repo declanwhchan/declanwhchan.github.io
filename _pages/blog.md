@@ -2,6 +2,10 @@
 layout: default
 permalink: /blog/
 title: blog
+_styles: |
+  h1 {
+    text-transform: capitalize;
+  }
 nav: true
 nav_order: 1
 pagination:

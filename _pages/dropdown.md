@@ -1,13 +1,16 @@
 ---
 layout: page
-title: submenus
+title: more
 nav: true
-nav_order: 8
+nav_order: 6
 dropdown: true
 children:
-  - title: bookshelf
-    permalink: /books/
+  - title: LinkedIn
+    permalink: https://www.linkedin.com/in/declanwhchan/
   - title: divider
-  - title: blog
-    permalink: /blog/
+  - title: GitHub
+    permalink: https://github.com/declanwhchan
+  - title: divider
+  - title: Email
+    permalink: mailto:declan.chan@mail.utoronto.ca
 ---

@@ -2,16 +2,15 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Toronto, Ontario, Canada.
 
 profile:
   align: right
   image: logo.png
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Engineering Science 2T9</p>
+    <p>@ Universty of Toronto</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -27,8 +26,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `logo.png` and put it in the `img/` folder.
+I'm currently an [Engineering Science](https://engsci.utoronto.ca/) undergraduate student at the University of Toronto.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eros libero, hendrerit a tincidunt quis, bibendum ac lorem. Phasellus et accumsan lacus. Sed congue gravida sem, ac consequat diam auctor sit amet. Pellentesque non accumsan neque. Nam tempor mauris non lacus efficitur, ut vulputate nunc lobortis. Suspendisse potenti. Quisque venenatis, augue ut vestibulum laoreet, nunc eros tempus nibh, eu lobortis eros orci eu sem.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Fusce feugiat turpis ornare molestie egestas. Quisque sed dui eu sapien tempus dignissim. Quisque posuere bibendum turpis ac sollicitudin. Nunc porttitor orci in nisl porta, ut pellentesque mi sollicitudin. Sed rhoncus risus lacinia, maximus tortor a, mollis turpis. Curabitur sed cursus nulla. Ut efficitur feugiat tortor ac porttitor. Quisque nec tortor id neque fringilla auctor. Suspendisse potenti. Cras non ullamcorper eros. Aenean quis tellus volutpat, sagittis nibh a, ullamcorper nibh. Vestibulum interdum vulputate ante, tincidunt pharetra odio ullamcorper nec. Proin ut purus laoreet, laoreet neque sed, volutpat massa.
