@@ -26,7 +26,32 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-{% include toronto-time.liquid %}
+<p class="toronto-clock" aria-live="polite">
+  <span id="toronto-time">Loading...</span>
+</p>
+
+<script>
+  function updateTorontoTime() {
+    const now = new Date();
+
+    document.getElementById("toronto-time").textContent =
+      new Intl.DateTimeFormat("en-CA", {
+        timeZone: "America/Toronto",
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZoneName: "short",
+        hour12: false
+      }).format(now);
+  }
+
+  updateTorontoTime();
+  setInterval(updateTorontoTime, 1000);
+</script>
 
 I'm currently an [Engineering Science](https://engsci.utoronto.ca/) undergraduate student at the University of Toronto.
 
