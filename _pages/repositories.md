@@ -2,10 +2,6 @@
 layout: page
 permalink: /repositories/
 title: repositories
-_styles: |
-  h1 {
-    text-transform: capitalize;
-  }
 description: A collection of public and open-source GitHub repositories.
 nav: true
 nav_order: 5

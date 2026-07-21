@@ -2,10 +2,6 @@
 layout: page
 permalink: /publications/
 title: publications
-_styles: |
-  h1 {
-    text-transform: capitalize;
-  }
 description: A collection of publications in reversed chronological order.
 nav: true
 nav_order: 4

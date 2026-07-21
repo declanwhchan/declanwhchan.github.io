@@ -4,7 +4,7 @@ cv_pdf: /assets/pdf/ChanDeclanCV.pdf
 email: declan.chan@mail.utoronto.ca
 github_username: declanwhchan
 linkedin_username: declanwhchan
-rss_icon: true
+rss_icon: false
 
 # Add these later if you use them:
 # github_username:

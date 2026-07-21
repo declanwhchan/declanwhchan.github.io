@@ -1,0 +1,28 @@
+<div class="toronto-clock" aria-live="polite">
+  <strong>TORONTO TIME</strong><br>
+  <span id="toronto-time">Loading...</span>
+</div>
+
+<script>
+  function updateTorontoTime() {
+    const now = new Date();
+
+    const formattedTime = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "America/Toronto",
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      second: "2-digit",
+      timeZoneName: "short",
+      hour12: true
+    }).format(now);
+
+    document.getElementById("toronto-time").textContent = formattedTime;
+  }
+
+  updateTorontoTime();
+  setInterval(updateTorontoTime, 1000);
+</script>

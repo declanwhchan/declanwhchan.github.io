@@ -1,10 +1,6 @@
 ---
 layout: page
 title: projects
-_styles: |
-  h1 {
-    text-transform: capitalize;
-  }
 permalink: /projects/
 description: A collection of projects.
 nav: true
