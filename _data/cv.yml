@@ -4,11 +4,11 @@ cv:
       - label: Name
         details: Declan Chan
       - label: Website
-        details: [declanwhchan.github.io](https://declanwhchan.github.io)
+        details: '<a href="https://declanwhchan.github.io" target="_blank" rel="noopener noreferrer">declanwhchan.github.io</a>'
       - label: LinkedIn
-        details: [declanwhchan](https://www.linkedin.com/in/declanwhchan/)
+        details: '<a href="https://www.linkedin.com/in/declanwhchan/" target="_blank" rel="noopener noreferrer">declanwhchan</a>'
       - label: GitHub
-        details: [declanwhchan](https://github.com/declanwhchan)
+        details: '<a href="https://github.com/declanwhchan" target="_blank" rel="noopener noreferrer">declanwhchan</a>'
 
     Education:
       - institution: University of Toronto
