@@ -54,6 +54,33 @@ footer_text: |
       color: var(--global-hover-text-color) !important;
       transform: translateY(-2px) !important;
     }
+    @media (max-width: 575.98px) {
+      .navbar .dropdown-menu {
+        position: static !important;
+        inset: auto !important;
+        float: none !important;
+        transform: none !important;
+
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0.25rem 0 0.25rem 1rem !important;
+
+        border: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .navbar .dropdown-menu .dropdown-item {
+        box-sizing: border-box !important;
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0.4rem 0.75rem !important;
+
+        text-align: left !important;
+        white-space: normal !important;
+      }
+    }
   </style>
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)

@@ -2,6 +2,7 @@
 layout: page
 title: Pendulum
 description: "PHY180: Homemade Pendulum Report"
+img: assets/img/pendulum_graph.png
 importance: 2
 category: Year 1
 related_publications: false
