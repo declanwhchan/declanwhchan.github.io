@@ -15,8 +15,7 @@ _styles: |
   .custom-cv-actions {
     display: flex;
     justify-content: flex-end;
-    margin-top: -3.5rem;
-    margin-bottom: 1.5rem;
+    margin: 0 0 1rem;
   }
 
   .custom-cv-actions a {
@@ -33,7 +32,7 @@ _styles: |
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--global-divider-color);
     font-family: inherit;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.2;
   }
@@ -196,24 +195,32 @@ _styles: |
       </div>
     {% endif %}
 
-    {% for profile in resume.basics.profiles %}
+    {% if resume.basics.profiles.size > 0 %}
       <div class="custom-cv-row">
-        <div class="custom-cv-label">{{ profile.network }}</div>
+        <div class="custom-cv-label">Socials</div>
+
         <div>
-          <a
-            href="{{ profile.url }}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {{ profile.username }}
-          </a>
+          {% for profile in resume.basics.profiles %}
+            <a
+              href="{{ profile.url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ profile.network }}
+            </a>
+
+            {% unless forloop.last %}
+              <span aria-hidden="true"> · </span>
+            {% endunless %}
+          {% endfor %}
         </div>
       </div>
-    {% endfor %}
+    {% endif %}
 
   </section>
 
 {% if resume.education.size > 0 %}
+
 <section class="custom-cv-section">
 <h2 id="education" class="custom-cv-section-title">Education</h2>
 
@@ -230,7 +237,7 @@ _styles: |
           </div>
 
           <div>
-            <h3 class="custom-cv-entry-title">
+            <h3 class="custom-cv-entry-title js-toc-ignore">
               {{ entry.institution }}
             </h3>
 
@@ -271,6 +278,7 @@ _styles: |
 {% endif %}
 
 {% if resume.skills.size > 0 %}
+
 <section class="custom-cv-section">
 <h2 id="technical-skills" class="custom-cv-section-title">
 Technical Skills
@@ -294,6 +302,7 @@ Technical Skills
 {% endif %}
 
 {% if resume.work.size > 0 %}
+
 <section class="custom-cv-section">
 <h2 id="experience" class="custom-cv-section-title">Experience</h2>
 
@@ -310,7 +319,7 @@ Technical Skills
           </div>
 
           <div>
-            <h3 class="custom-cv-entry-title">
+            <h3 class="custom-cv-entry-title js-toc-ignore">
               {{ entry.position }}
             </h3>
 
@@ -353,6 +362,7 @@ Technical Skills
 {% endif %}
 
 {% if resume.projects.size > 0 %}
+
 <section class="custom-cv-section">
 <h2 id="projects" class="custom-cv-section-title">Projects</h2>
 
@@ -373,7 +383,7 @@ Technical Skills
           </div>
 
           <div>
-            <h3 class="custom-cv-entry-title">
+            <h3 class="custom-cv-entry-title js-toc-ignore">
               {% if entry.url %}
                 <a
                   href="{{ entry.url }}"
@@ -416,6 +426,7 @@ Technical Skills
 {% assign extracurriculars = resume.ecs | default: resume.volunteer %}
 
 {% if extracurriculars.size > 0 %}
+
 <section class="custom-cv-section">
 <h2 id="ecs" class="custom-cv-section-title">ECs</h2>
 
@@ -436,7 +447,7 @@ Technical Skills
           </div>
 
           <div>
-            <h3 class="custom-cv-entry-title">
+            <h3 class="custom-cv-entry-title js-toc-ignore">
               {{ entry.title | default: entry.position }}
             </h3>
 
