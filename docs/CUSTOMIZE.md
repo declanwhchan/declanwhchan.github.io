@@ -358,7 +358,7 @@ You can keep both [`_data/cv.yml`](../_data/cv.yml) and [`assets/json/resume.jso
 ```yaml
 ---
 layout: cv
-cv_format: rendercv # options: rendercv or jsonresume
+cv_format: jsonresume # options: rendercv or jsonresume
 ---
 ```
 
@@ -376,7 +376,7 @@ Set the `cv_pdf` variable in the frontmatter of [`_pages/cv.md`](../_pages/cv.md
 ---
 layout: cv
 cv_pdf: /assets/rendercv/rendercv_output/CV.pdf
-cv_format: rendercv
+cv_format: jsonresume
 ---
 ```
 
