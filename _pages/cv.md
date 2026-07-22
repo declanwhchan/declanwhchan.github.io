@@ -146,7 +146,7 @@ _styles: |
   }
 ---
 
-{% assign cv = site.data.cv.cv %}
+{% assign resume = site.data.resume %}
 
 <div class="custom-cv-actions">
   <a
@@ -160,121 +160,312 @@ _styles: |
 </div>
 
 <div class="custom-cv">
-  {% for section_pair in cv.sections %}
-    {% assign section_title = section_pair[0] %}
-    {% assign section_entries = section_pair[1] %}
-    {% assign section_id = section_title | slugify %}
+  <section class="custom-cv-section">
+    <h2 id="basics" class="custom-cv-section-title">Basics</h2>
 
-    <section class="custom-cv-section">
-      <h2 id="{{ section_id }}" class="custom-cv-section-title">
-        {{ section_title }}
-      </h2>
+    {% if resume.basics.name %}
+      <div class="custom-cv-row">
+        <div class="custom-cv-label">Name</div>
+        <div>{{ resume.basics.name }}</div>
+      </div>
+    {% endif %}
 
-      {% for entry in section_entries %}
-        {% if section_title == "Basics" %}
-          <div class="custom-cv-row">
-            <div class="custom-cv-label">{{ entry.label }}</div>
-            <div>{{ entry.details }}</div>
+    {% if resume.basics.email %}
+      <div class="custom-cv-row">
+        <div class="custom-cv-label">Email</div>
+        <div>
+          <a href="mailto:{{ resume.basics.email }}">
+            {{ resume.basics.email }}
+          </a>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if resume.basics.url %}
+      <div class="custom-cv-row">
+        <div class="custom-cv-label">Website</div>
+        <div>
+          <a
+            href="{{ resume.basics.url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ resume.basics.url }}
+          </a>
+        </div>
+      </div>
+    {% endif %}
+
+    {% for profile in resume.basics.profiles %}
+      <div class="custom-cv-row">
+        <div class="custom-cv-label">{{ profile.network }}</div>
+        <div>
+          <a
+            href="{{ profile.url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ profile.username }}
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+
+  </section>
+
+{% if resume.education.size > 0 %}
+<section class="custom-cv-section">
+<h2 id="education" class="custom-cv-section-title">Education</h2>
+
+      {% for entry in resume.education %}
+        {% assign end_date = entry.endDate | default: "Present" %}
+
+        <div class="custom-cv-entry">
+          <div class="custom-cv-date">
+            {% if entry.startDate %}
+              <span class="custom-cv-date-badge">
+                {{ entry.startDate }} – {{ end_date }}
+              </span>
+            {% endif %}
           </div>
 
-        {% elsif section_title == "Technical Skills" or section_title == "Skills" %}
-          <div class="custom-cv-row">
-            <div class="custom-cv-label">
-              {{ entry.label | default: entry.name }}
-            </div>
+          <div>
+            <h3 class="custom-cv-entry-title">
+              {{ entry.institution }}
+            </h3>
 
-            <div>
-              {% if entry.keywords %}
-                {{ entry.keywords | join: ", " }}
-              {% else %}
-                {{ entry.details }}
-              {% endif %}
-            </div>
-          </div>
-
-        {% else %}
-          {% assign start_date = entry.start_date | default: entry.startDate %}
-          {% assign end_date = entry.end_date | default: entry.endDate %}
-          {% assign displayed_date = entry.date %}
-
-          {% if displayed_date == nil and start_date %}
-            {% assign displayed_end_date = end_date | default: "Present" %}
-            {% assign displayed_date = start_date
-              | append: " - "
-              | append: displayed_end_date
-            %}
-          {% endif %}
-
-          {% assign entry_title = entry.position
-            | default: entry.title
-            | default: entry.name
-          %}
-
-          {% assign entry_subtitle = entry.company
-            | default: entry.organization
-            | default: entry.institution
-          %}
-
-          {% if section_title == "Education" %}
-            {% capture education_credential %}
+            {% capture credential %}
               {{ entry.studyType }}{% if entry.area %}{% if entry.studyType %}, {% endif %}{{ entry.area }}{% endif %}
             {% endcapture %}
-            {% assign secondary_text = education_credential | strip %}
-          {% else %}
-            {% assign secondary_text = entry_subtitle %}
-          {% endif %}
 
-          <div class="custom-cv-entry">
-            <div class="custom-cv-date">
-              {% if displayed_date %}
-                <span class="custom-cv-date-badge">
-                  {{ displayed_date }}
-                </span>
-              {% endif %}
+            {% assign credential = credential | strip %}
 
-              {% if entry.location %}
-                <div class="custom-cv-entry-location">
-                  {{ entry.location }}
-                </div>
-              {% endif %}
-            </div>
+            {% if credential != blank %}
+              <div class="custom-cv-entry-subtitle">
+                {{ credential }}
+              </div>
+            {% endif %}
 
-            <div>
-              {% if section_title == "Education" %}
-                <h3 class="custom-cv-entry-title">
-                  {{ entry.institution }}
-                </h3>
-              {% elsif entry_title %}
-                <h3 class="custom-cv-entry-title">
-                  {{ entry_title }}
-                </h3>
-              {% endif %}
+            {% if entry.score %}
+              <div>{{ entry.score }}</div>
+            {% endif %}
 
-              {% if secondary_text != blank %}
-                <div class="custom-cv-entry-subtitle">
-                  {{ secondary_text }}
-                </div>
-              {% endif %}
-
-              {% if entry.summary %}
-                <div>{{ entry.summary }}</div>
-              {% endif %}
-
-              {% if entry.highlights %}
-                <ul>
-                  {% for highlight in entry.highlights %}
-                    <li>
-                      {{ highlight | markdownify | remove: "<p>" | remove: "</p>" }}
-                    </li>
-                  {% endfor %}
-                </ul>
-              {% endif %}
-            </div>
+            {% if entry.highlights %}
+              <ul>
+                {% for highlight in entry.highlights %}
+                  <li>
+                    {{ highlight
+                      | markdownify
+                      | remove: "<p>"
+                      | remove: "</p>"
+                    }}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
-        {% endif %}
+        </div>
       {% endfor %}
     </section>
 
-{% endfor %}
+{% endif %}
+
+{% if resume.skills.size > 0 %}
+<section class="custom-cv-section">
+<h2 id="technical-skills" class="custom-cv-section-title">
+Technical Skills
+</h2>
+
+      {% for skill in resume.skills %}
+        <div class="custom-cv-row">
+          <div class="custom-cv-label">{{ skill.name }}</div>
+
+          <div>
+            {% if skill.keywords %}
+              {{ skill.keywords | join: ", " }}
+            {% elsif skill.details %}
+              {{ skill.details }}
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+
+{% endif %}
+
+{% if resume.work.size > 0 %}
+<section class="custom-cv-section">
+<h2 id="experience" class="custom-cv-section-title">Experience</h2>
+
+      {% for entry in resume.work %}
+        {% assign end_date = entry.endDate | default: "Present" %}
+
+        <div class="custom-cv-entry">
+          <div class="custom-cv-date">
+            {% if entry.startDate %}
+              <span class="custom-cv-date-badge">
+                {{ entry.startDate }} – {{ end_date }}
+              </span>
+            {% endif %}
+          </div>
+
+          <div>
+            <h3 class="custom-cv-entry-title">
+              {{ entry.position }}
+            </h3>
+
+            {% if entry.name %}
+              <div class="custom-cv-entry-subtitle">
+                {{ entry.name }}
+              </div>
+            {% endif %}
+
+            {% if entry.location %}
+              <div class="custom-cv-entry-location">
+                {{ entry.location }}
+              </div>
+            {% endif %}
+
+            {% if entry.summary %}
+              <div>
+                {{ entry.summary | markdownify }}
+              </div>
+            {% endif %}
+
+            {% if entry.highlights %}
+              <ul>
+                {% for highlight in entry.highlights %}
+                  <li>
+                    {{ highlight
+                      | markdownify
+                      | remove: "<p>"
+                      | remove: "</p>"
+                    }}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+
+{% endif %}
+
+{% if resume.projects.size > 0 %}
+<section class="custom-cv-section">
+<h2 id="projects" class="custom-cv-section-title">Projects</h2>
+
+      {% for entry in resume.projects %}
+        {% assign end_date = entry.endDate | default: "Present" %}
+
+        <div class="custom-cv-entry">
+          <div class="custom-cv-date">
+            {% if entry.date %}
+              <span class="custom-cv-date-badge">
+                {{ entry.date }}
+              </span>
+            {% elsif entry.startDate %}
+              <span class="custom-cv-date-badge">
+                {{ entry.startDate }} – {{ end_date }}
+              </span>
+            {% endif %}
+          </div>
+
+          <div>
+            <h3 class="custom-cv-entry-title">
+              {% if entry.url %}
+                <a
+                  href="{{ entry.url }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ entry.name }}
+                </a>
+              {% else %}
+                {{ entry.name }}
+              {% endif %}
+            </h3>
+
+            {% if entry.description %}
+              <div class="custom-cv-entry-subtitle">
+                {{ entry.description }}
+              </div>
+            {% endif %}
+
+            {% if entry.highlights %}
+              <ul>
+                {% for highlight in entry.highlights %}
+                  <li>
+                    {{ highlight
+                      | markdownify
+                      | remove: "<p>"
+                      | remove: "</p>"
+                    }}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+
+{% endif %}
+
+{% assign extracurriculars = resume.ecs | default: resume.volunteer %}
+
+{% if extracurriculars.size > 0 %}
+<section class="custom-cv-section">
+<h2 id="ecs" class="custom-cv-section-title">ECs</h2>
+
+      {% for entry in extracurriculars %}
+        {% assign end_date = entry.endDate | default: "Present" %}
+
+        <div class="custom-cv-entry">
+          <div class="custom-cv-date">
+            {% if entry.date %}
+              <span class="custom-cv-date-badge">
+                {{ entry.date }}
+              </span>
+            {% elsif entry.startDate %}
+              <span class="custom-cv-date-badge">
+                {{ entry.startDate }} – {{ end_date }}
+              </span>
+            {% endif %}
+          </div>
+
+          <div>
+            <h3 class="custom-cv-entry-title">
+              {{ entry.title | default: entry.position }}
+            </h3>
+
+            {% assign organization = entry.organization | default: entry.name %}
+
+            {% if organization %}
+              <div class="custom-cv-entry-subtitle">
+                {{ organization }}
+              </div>
+            {% endif %}
+
+            {% if entry.highlights %}
+              <ul>
+                {% for highlight in entry.highlights %}
+                  <li>
+                    {{ highlight
+                      | markdownify
+                      | remove: "<p>"
+                      | remove: "</p>"
+                    }}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+
+{% endif %}
 
 </div>
