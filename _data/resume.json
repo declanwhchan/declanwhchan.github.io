@@ -1,16 +1,15 @@
 {
   "basics": {
     "name": "Declan Chan",
+    "label": "<a href=\"https://www.linkedin.com/in/declanwhchan/\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a> · <a href=\"https://github.com/declanwhchan\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>",
     "url": "https://declanwhchan.github.io/",
     "profiles": [
       {
         "network": "LinkedIn",
-        "username": "declanwhchan",
         "url": "https://www.linkedin.com/in/declanwhchan/"
       },
       {
         "network": "GitHub",
-        "username": "declanwhchan",
         "url": "https://github.com/declanwhchan"
       }
     ]
@@ -96,7 +95,7 @@
     {
       "name": "Attacks Against Machine Learning Force Fields",
       "startDate": "2026",
-      "endDate": "2026",
+      "endDate": "Present",
       "highlights": [
         "Developed open-source software to generate first-order adversarial attacks against MLFFs.",
         "Built Python/PyTorch pipelines to process Materials Project and LiCOHPF datasets.",
@@ -106,7 +105,6 @@
     {
       "name": "GenAI Genesis Hackathon",
       "startDate": "2026",
-      "endDate": "2026",
       "highlights": [
         "Developed an interactive platform visualizing human disease progression.",
         "Implemented a RAG system trained on PubMed data via IBM watsonx.ai.",
@@ -116,7 +114,6 @@
     {
       "name": "CIV102 Bridge Project",
       "startDate": "2025",
-      "endDate": "2025",
       "highlights": [
         "Optimized structural performance and prototyped a matboard bridge using Python.",
         "Top 1 in the cohort and 2nd in the class of 2025."
@@ -139,28 +136,6 @@
         "Used the HashLips Art Engine to generate layered NFT artwork from image assets.",
         "Created and deployed NFTs on OpenSea.io using the Polygon Ethereum blockchain."
       ]
-    }
-  ],
-  "awards": [
-    {
-      "title": "Rubik's Cube Competitions",
-      "date": "2022--2025",
-      "summary": "- Top 90 in Canada for 3x3x3 fewest moves.\n- Volunteered as a judge for the World Cube Association.\n- Club President who taught beginners and organized school-wide competitions."
-    },
-    {
-      "title": "Varsity Volleyball",
-      "date": "2022--2025",
-      "summary": "- Team Captain in Grade 10 and 12.\n- Tier 1 YRAA Championship junior varsity 2nd place.\n- Tier 1 YRAA Championship senior varsity 2nd place."
-    },
-    {
-      "title": "Rep Volleyball",
-      "date": "2019--2023",
-      "summary": "- Team Captain and 2X MVP.\n- Silver medal in Canada's 2023 Youth Nationals."
-    },
-    {
-      "title": "Music Performance",
-      "date": "2014--2023",
-      "summary": "- Theory and Instrumental: Level 10 RCM comprehensive certificate (First Class Honors).\n- Level 10 RCM practical piano certificate (First Class Honors with Distinction).\n- Level 8 RCM practical violin certificate (First Class Honors with Distinction)."
     }
   ]
 }

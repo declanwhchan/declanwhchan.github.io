@@ -10,14 +10,90 @@ description: |
   Last updated: 2026-07-21
 
   <style>
-    /* Use the website font and regular-weight titles. */
-    .cv h3.card-title,
+    /* Arrange the visible CV sections. */
+    .cv {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    .cv > * {
+      order: 99;
+    }
+
+    .cv > .card:first-of-type {
+      order: 1;
+    }
+
+    .cv > #education,
+    .cv > #education + .card {
+      order: 2;
+    }
+
+    .cv > #skills,
+    .cv > #skills + .card {
+      order: 3;
+    }
+
+    .cv > #experience,
+    .cv > #experience + .card {
+      order: 4;
+    }
+
+    .cv > #projects,
+    .cv > #projects + .card {
+      order: 5;
+    }
+
+    /* Use regular weight and the site's normal font for titles. */
+    .cv .card > h3.card-title,
     .cv h6.title {
       font-family: inherit !important;
       font-weight: 400 !important;
     }
 
-    /* Remove borders and lines surrounding date badges. */
+    /* Rename Contact Information to Basics. */
+    .cv > .card:first-of-type > h3.card-title {
+      font-size: 0 !important;
+    }
+
+    .cv > .card:first-of-type > h3.card-title::after {
+      content: "Basics";
+      display: block;
+      font-family: inherit;
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    /* Rename Skills to Technical Skills. */
+    .cv > #skills + .card > h3.card-title {
+      font-size: 0 !important;
+    }
+
+    .cv > #skills + .card > h3.card-title::after {
+      content: "Technical Skills";
+      display: block;
+      font-family: inherit;
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    /* Rename the Professional Title row to Socials. */
+    .cv > .card:first-of-type table tr:nth-child(2) td:first-child b {
+      font-size: 0 !important;
+    }
+
+    .cv > .card:first-of-type
+      table
+      tr:nth-child(2)
+      td:first-child
+      b::after {
+      content: "Socials";
+      font-size: 1rem;
+    }
+
+    /* Remove all lines surrounding date badges. */
     .cv table.table-cv,
     .cv table.table-cv tbody,
     .cv table.table-cv tr,
@@ -29,34 +105,45 @@ description: |
       box-shadow: none !important;
     }
 
-    /* Remove timeline dots, pins, and other date-column decorations. */
+    /* Remove the dot and location-pin decorations beside dates. */
     .cv .date-column::before,
     .cv .date-column::after,
     .cv .date-column .location,
-    .cv .date-column .iconlocation {
+    .cv .date-column .iconlocation,
+    .cv .date-column table::before,
+    .cv .date-column table::after {
       display: none !important;
       content: none !important;
     }
 
-    /* Remove the template's default entry borders. */
+    .cv li.list-group-item {
+      list-style: none !important;
+    }
+
+    .cv li.list-group-item::marker,
+    .cv li.list-group-item::before {
+      content: "" !important;
+      display: none !important;
+    }
+
+    /* Add a divider between individual entries. */
     .cv ul.list-group-flush > li.list-group-item {
       border: 0 !important;
       padding-top: 1rem !important;
       padding-bottom: 1rem !important;
     }
 
-    /* Add one divider between entries. */
     .cv ul.list-group-flush > li.list-group-item + li.list-group-item {
       border-top: 1px solid var(--global-divider-color) !important;
     }
 
-    /* Add a divider between major CV sections. */
+    /* Add a divider between major sections. */
     .cv > a.anchor + .card {
       border-top: 1px solid var(--global-divider-color) !important;
       border-radius: 0 !important;
     }
 
-    /* Hide TOC scrollbars without disabling scrolling. */
+    /* Keep the TOC scrollable without showing scrollbars. */
     #toc-sidebar,
     .toc-sidebar,
     .toc,
@@ -74,106 +161,52 @@ description: |
       width: 0 !important;
       height: 0 !important;
     }
+
+  /* Hide the original generated TOC labels. */
+  .js-toc a[href="#contact-information"],
+  .js-toc a[href="#skills"] {
+    font-size: 0 !important;
+  }
+
+  /* Display the customized TOC labels. */
+  .js-toc a[href="#contact-information"]::after {
+    content: "Basics";
+    display: inline-block;
+    font-size: 0.875rem;
+  }
+
+  .js-toc a[href="#skills"]::after {
+    content: "Technical Skills";
+    display: inline-block;
+    font-size: 0.875rem;
+  }
+
+    /* Arrange the TOC in the same order as the CV. */
+    .js-toc > .toc-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .js-toc .toc-list > li:has(a[href="#contact-information"]) {
+      order: 1;
+    }
+
+    .js-toc .toc-list > li:has(a[href="#education"]) {
+      order: 2;
+    }
+
+    .js-toc .toc-list > li:has(a[href="#skills"]) {
+      order: 3;
+    }
+
+    .js-toc .toc-list > li:has(a[href="#experience"]) {
+      order: 4;
+    }
+
+    .js-toc .toc-list > li:has(a[href="#projects"]) {
+      order: 5;
+    }
   </style>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const cv = document.querySelector(".cv");
-      if (!cv) return;
-
-      const findHeading = (title) =>
-        Array.from(
-          cv.querySelectorAll(":scope > .card > h3.card-title")
-        ).find((heading) => heading.textContent.trim() === title);
-
-      const renameSection = (oldTitle, newTitle) => {
-        const heading = findHeading(oldTitle);
-        if (heading) heading.textContent = newTitle;
-      };
-
-      renameSection("Contact Information", "Basics");
-      renameSection("Skills", "Technical Skills");
-      renameSection("Awards", "ECs");
-
-      /* Add social links because this renderer ignores basics.profiles. */
-      const basicsHeading = findHeading("Basics");
-      const basicsCard = basicsHeading?.closest(".card");
-      const basicsTable = basicsCard?.querySelector("table tbody");
-
-      const addSocialRow = (label, text, url) => {
-        if (!basicsTable || basicsCard.querySelector(`a[href="${url}"]`)) return;
-
-        const row = document.createElement("tr");
-
-        const labelCell = document.createElement("td");
-        labelCell.className = "p-1 pr-2 font-weight-bold";
-
-        const labelElement = document.createElement("b");
-        labelElement.textContent = label;
-        labelCell.append(labelElement);
-
-        const valueCell = document.createElement("td");
-        valueCell.className = "p-1 pl-2 font-weight-light";
-
-        const link = document.createElement("a");
-        link.href = url;
-        link.textContent = text;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-
-        valueCell.append(link);
-        row.append(labelCell, valueCell);
-        basicsTable.append(row);
-      };
-
-      addSocialRow(
-        "LinkedIn",
-        "declanwhchan",
-        "https://www.linkedin.com/in/declanwhchan/"
-      );
-
-      addSocialRow(
-        "GitHub",
-        "declanwhchan",
-        "https://github.com/declanwhchan"
-      );
-
-      /* Enforce the requested section order. */
-      const desiredOrder = [
-        "Basics",
-        "Education",
-        "Technical Skills",
-        "Experience",
-        "Projects",
-        "ECs"
-      ];
-
-      const cards = Array.from(cv.querySelectorAll(":scope > .card"));
-
-      for (const title of desiredOrder) {
-        const card = cards.find(
-          (element) =>
-            element
-              .querySelector(":scope > h3.card-title")
-              ?.textContent.trim() === title
-        );
-
-        if (!card) continue;
-
-        const anchor = card.previousElementSibling;
-
-        if (anchor?.classList.contains("anchor")) {
-          cv.append(anchor);
-        }
-
-        cv.append(card);
-      }
-
-      window.setTimeout(() => {
-        window.tocbot?.refresh?.();
-      }, 0);
-    });
-  </script>
 toc:
   sidebar: left
 ---
