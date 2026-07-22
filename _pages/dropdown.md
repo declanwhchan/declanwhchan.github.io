@@ -5,9 +5,9 @@ nav: true
 nav_order: 6
 dropdown: true
 children:
-  - title: asdf
-    permalink: /asdf/
+  - title: engsci
+    permalink: /engsci/
   - title: divider
-  - title: asdf
-    permalink: /asdf/
+  - title: ib
+    permalink: /ib/
 ---

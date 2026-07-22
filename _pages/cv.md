@@ -12,15 +12,34 @@ _styles: |
     font-family: inherit;
   }
 
+  .post {
+    position: relative;
+  }
+
   .custom-cv-actions {
+    position: absolute;
+    top: 0.25rem;
+    right: 0;
+    z-index: 2;
     display: flex;
-    justify-content: flex-end;
-    margin: 0 0 1rem;
+    margin: 0;
   }
 
   .custom-cv-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: var(--global-theme-color);
-    font-size: 2rem;
+    font-size: 3.25rem;
+    line-height: 1;
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .custom-cv-actions a:hover {
+    color: var(--global-hover-color);
+    transform: translateY(-2px);
   }
 
   .custom-cv-section {
@@ -129,9 +148,24 @@ _styles: |
 
   @media (max-width: 576px) {
     .custom-cv-actions {
-      margin-top: 0;
-      justify-content: flex-start;
+      top: 0.25rem;
+      right: 0;
     }
+
+    .custom-cv-actions a {
+      font-size: 2.5rem;
+    }
+
+    .custom-cv-entry {
+      grid-template-columns: 1fr;
+      row-gap: 0.65rem;
+    }
+
+    .custom-cv-row {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
 
     .custom-cv-entry {
       grid-template-columns: 1fr;
@@ -159,7 +193,7 @@ _styles: |
 </div>
 
 <div class="custom-cv">
-  <section class="custom-cv-section">
+  <section class="custom-cv-section card mt-3 p-3">
     <h2 id="basics" class="custom-cv-section-title">Basics</h2>
 
     {% if resume.basics.name %}
@@ -221,7 +255,7 @@ _styles: |
 
 {% if resume.education.size > 0 %}
 
-<section class="custom-cv-section">
+<section class="custom-cv-section card mt-3 p-3">
 <h2 id="education" class="custom-cv-section-title">Education</h2>
 
       {% for entry in resume.education %}
@@ -237,9 +271,9 @@ _styles: |
           </div>
 
           <div>
-            <h3 class="custom-cv-entry-title js-toc-ignore">
+            <div class="custom-cv-entry-title">
               {{ entry.institution }}
-            </h3>
+            </div>
 
             {% capture credential %}
               {{ entry.studyType }}{% if entry.area %}{% if entry.studyType %}, {% endif %}{{ entry.area }}{% endif %}
@@ -279,7 +313,7 @@ _styles: |
 
 {% if resume.skills.size > 0 %}
 
-<section class="custom-cv-section">
+<section class="custom-cv-section card mt-3 p-3">
 <h2 id="technical-skills" class="custom-cv-section-title">
 Technical Skills
 </h2>
@@ -303,7 +337,7 @@ Technical Skills
 
 {% if resume.work.size > 0 %}
 
-<section class="custom-cv-section">
+<section class="custom-cv-section card mt-3 p-3">
 <h2 id="experience" class="custom-cv-section-title">Experience</h2>
 
       {% for entry in resume.work %}
@@ -319,9 +353,9 @@ Technical Skills
           </div>
 
           <div>
-            <h3 class="custom-cv-entry-title js-toc-ignore">
+            <div class="custom-cv-entry-title">
               {{ entry.position }}
-            </h3>
+            </div>
 
             {% if entry.name %}
               <div class="custom-cv-entry-subtitle">
@@ -363,7 +397,7 @@ Technical Skills
 
 {% if resume.projects.size > 0 %}
 
-<section class="custom-cv-section">
+<section class="custom-cv-section card mt-3 p-3">
 <h2 id="projects" class="custom-cv-section-title">Projects</h2>
 
       {% for entry in resume.projects %}
@@ -383,7 +417,7 @@ Technical Skills
           </div>
 
           <div>
-            <h3 class="custom-cv-entry-title js-toc-ignore">
+            <div class="custom-cv-entry-title">
               {% if entry.url %}
                 <a
                   href="{{ entry.url }}"
@@ -395,7 +429,7 @@ Technical Skills
               {% else %}
                 {{ entry.name }}
               {% endif %}
-            </h3>
+            </div>
 
             {% if entry.description %}
               <div class="custom-cv-entry-subtitle">
@@ -427,7 +461,7 @@ Technical Skills
 
 {% if extracurriculars.size > 0 %}
 
-<section class="custom-cv-section">
+<section class="custom-cv-section card mt-3 p-3">
 <h2 id="ecs" class="custom-cv-section-title">ECs</h2>
 
       {% for entry in extracurriculars %}
@@ -447,9 +481,9 @@ Technical Skills
           </div>
 
           <div>
-            <h3 class="custom-cv-entry-title js-toc-ignore">
+            <div class="custom-cv-entry-title">
               {{ entry.title | default: entry.position }}
-            </h3>
+            </div>
 
             {% assign organization = entry.organization | default: entry.name %}
 

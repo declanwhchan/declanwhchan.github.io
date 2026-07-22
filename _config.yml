@@ -10,8 +10,51 @@ contact_note: >
   Email works best.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-footer_text: >
-  <script src="/assets/js/cursor-glow.js" defer></script>
+footer_text: |
+  <script src="/assets/js/cursor-glow.js"></script>
+  <style>
+    #back-to-top {
+      box-sizing: border-box !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px !important;
+      min-height: 40px !important;
+      padding: 0 !important;
+      border: 0 !important;
+      border-radius: 50% !important;
+      background-color: #111827 !important;
+      color: #ffffff !important;
+      line-height: 0 !important;
+      text-align: center !important;
+      transition:
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease !important;
+    }
+
+    #back-to-top svg {
+      position: static !important;
+      display: block !important;
+      width: 16px !important;
+      height: 16px !important;
+      margin: 0 !important;
+      transform: none !important;
+    }
+
+    #back-to-top svg path {
+      fill: currentColor !important;
+    }
+
+    #back-to-top:hover,
+    #back-to-top:focus-visible {
+      background-color: var(--global-theme-color) !important;
+      color: var(--global-hover-text-color) !important;
+      transform: translateY(-2px) !important;
+    }
+  </style>
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: logo.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
@@ -186,6 +229,10 @@ collections:
   news:
     defaults:
       layout: post
+    output: true
+  engsci:
+    output: true
+  ib:
     output: true
   projects:
     output: true

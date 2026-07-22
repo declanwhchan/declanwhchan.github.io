@@ -495,7 +495,7 @@ To create a new collection, follow these steps. We will create a `courses` colle
    {% assign course_items = site.courses | sort: 'date' | reverse %}
 
    {% for item in course_items %}
-     <h3>{{ item.title }}</h3>
+     <h3>{{ item.title }}</div>
      <p>{{ item.content }}</p>
    {% endfor %}
    ```

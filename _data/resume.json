@@ -1,16 +1,17 @@
 {
   "basics": {
     "name": "Declan Chan",
-    "label": "<a href=\"https://www.linkedin.com/in/declanwhchan/\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a> · <a href=\"https://github.com/declanwhchan\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>",
+    "label": "<a href=\"mailto:declan.chan@mail.utoronto.ca\">Email</a> · <a href=\"https://github.com/declanwhchan\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a> · <a href=\"https://www.linkedin.com/in/declanwhchan/\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a>",
+    "email": "declan.chan@mail.utoronto.ca",
     "url": "https://declanwhchan.github.io/",
     "profiles": [
       {
-        "network": "LinkedIn",
-        "url": "https://www.linkedin.com/in/declanwhchan/"
-      },
-      {
         "network": "GitHub",
         "url": "https://github.com/declanwhchan"
+      },
+            {
+        "network": "LinkedIn",
+        "url": "https://www.linkedin.com/in/declanwhchan/"
       }
     ]
   },
