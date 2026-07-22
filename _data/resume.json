@@ -16,8 +16,7 @@
   },
   "education": [
     {
-      "studyType": "BASc",
-      "area": "Engineering Science",
+      "studyType": "BASc in Engineering Science",
       "institution": "University of Toronto",
       "startDate": "2025",
       "endDate": "Present",
@@ -25,7 +24,6 @@
     },
     {
       "studyType": "IB Diploma Programme",
-      "area": "IB Diploma Programme",
       "institution": "Maple High School",
       "startDate": "2021",
       "endDate": "2025",
