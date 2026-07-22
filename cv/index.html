@@ -1,18 +1,94 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> cv | Declan Chan </title> <meta name="author" content="Declan Chan"> <meta name="description" content="Last updated: 2026-07-21 &lt;style&gt; /* Use the website font and regular-weight titles. */ .cv h3.card-title, .cv h6.title { font-family: inherit !important; font-weight: 400 !important; } /* Remove borders and lines surrounding date badges. */ .cv table.table-cv, .cv table.table-cv tbody, .cv table.table-cv tr, .cv table.table-cv td, .cv table.table-cv &gt; :not(caption) &gt; * &gt; * { border: 0 !important; border-top: 0 !important; border-bottom: 0 !important; box-shadow: none !important; } /* Remove timeline dots, pins, and other date-column decorations. */ .cv .date-column::before, .cv .date-column::after, .cv .date-column .location, .cv .date-column .iconlocation { display: none !important; content: none !important; } /* Remove the template's default entry borders. */ .cv ul.list-group-flush &gt; li.list-group-item { border: 0 !important; padding-top: 1rem !important; padding-bottom: 1rem !important; } /* Add one divider between entries. */ .cv ul.list-group-flush &gt; li.list-group-item + li.list-group-item { border-top: 1px solid var(--global-divider-color) !important; } /* Add a divider between major CV sections. */ .cv &gt; a.anchor + .card { border-top: 1px solid var(--global-divider-color) !important; border-radius: 0 !important; } /* Hide TOC scrollbars without disabling scrolling. */ #toc-sidebar, .toc-sidebar, .toc, .js-toc { overflow-x: hidden !important; scrollbar-width: none !important; -ms-overflow-style: none !important; } #toc-sidebar::-webkit-scrollbar, .toc-sidebar::-webkit-scrollbar, .toc::-webkit-scrollbar, .js-toc::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; } &lt;/style&gt; &lt;script&gt; document.addEventListener(" domcontentloaded> </head> <body> <p> { const cv = document.querySelector(".cv"); if (!cv) return; const findHeading = (title) =&gt; Array.from( cv.querySelectorAll(":scope &gt; .card &gt; h3.card-title") ).find((heading) =&gt; heading.textContent.trim() === title); const renameSection = (oldTitle, newTitle) =&gt; { const heading = findHeading(oldTitle); if (heading) heading.textContent = newTitle; }; renameSection("Contact Information", "Basics"); renameSection("Skills", "Technical Skills"); renameSection("Awards", "ECs"); /* Add social links because this renderer ignores basics.profiles. */ const basicsHeading = findHeading("Basics"); const basicsCard = basicsHeading?.closest(".card"); const basicsTable = basicsCard?.querySelector("table tbody"); const addSocialRow = (label, text, url) =&gt; { if (!basicsTable || basicsCard.querySelector(`a[href="${url}"]`)) return; const row = document.createElement("tr"); const labelCell = document.createElement("td"); labelCell.className = "p-1 pr-2 font-weight-bold"; const labelElement = document.createElement("b"); labelElement.textContent = label; labelCell.append(labelElement); const valueCell = document.createElement("td"); valueCell.className = "p-1 pl-2 font-weight-light"; const link = document.createElement("a"); link.href = url; link.textContent = text; link.target = "_blank"; link.rel = "noopener noreferrer"; valueCell.append(link); row.append(labelCell, valueCell); basicsTable.append(row); }; addSocialRow( "LinkedIn", "declanwhchan", "https://www.linkedin.com/in/declanwhchan/" ); addSocialRow( "GitHub", "declanwhchan", "https://github.com/declanwhchan" ); /* Enforce the requested section order. */ const desiredOrder = [ "Basics", "Education", "Technical Skills", "Experience", "Projects", "ECs" ]; const cards = Array.from(cv.querySelectorAll(":scope &gt; .card")); for (const title of desiredOrder) { const card = cards.find( (element) =&gt; element .querySelector(":scope &gt; h3.card-title") ?.textContent.trim() === title ); if (!card) continue; const anchor = card.previousElementSibling; if (anchor?.classList.contains("anchor")) { cv.append(anchor); } cv.append(card); } window.setTimeout(() =&gt; { window.tocbot?.refresh?.(); }, 0); }); "&gt; <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> cv | Declan Chan </title> <meta name="author" content="Declan Chan"> <meta name="description" content="Last updated: 2026-07-21 &lt;style&gt; /* Arrange the visible CV sections. */ .cv { display: flex !important; flex-direction: column !important; } .cv &gt; * { order: 99; } .cv &gt; .card:first-of-type { order: 1; } .cv &gt; #education, .cv &gt; #education + .card { order: 2; } .cv &gt; #skills, .cv &gt; #skills + .card { order: 3; } .cv &gt; #experience, .cv &gt; #experience + .card { order: 4; } .cv &gt; #projects, .cv &gt; #projects + .card { order: 5; } /* Use regular weight and the site's normal font for titles. */ .cv .card &gt; h3.card-title, .cv h6.title { font-family: inherit !important; font-weight: 400 !important; } /* Rename Contact Information to Basics. */ .cv &gt; .card:first-of-type &gt; h3.card-title { font-size: 0 !important; } .cv &gt; .card:first-of-type &gt; h3.card-title::after { content: " basics display: block font-family: inherit font-size: font-weight: line-height: rename skills to technical skills. .cv> </head> <body> <p> #skills + .card &gt; h3.card-title { font-size: 0 !important; } .cv &gt; #skills + .card &gt; h3.card-title::after { content: "Technical Skills"; display: block; font-family: inherit; font-size: 1.75rem; font-weight: 400; line-height: 1.2; } /* Rename the Professional Title row to Socials. */ .cv &gt; .card:first-of-type table tr:nth-child(2) td:first-child b { font-size: 0 !important; } .cv &gt; .card:first-of-type table tr:nth-child(2) td:first-child b::after { content: "Socials"; font-size: 1rem; } /* Remove all lines surrounding date badges. */ .cv table.table-cv, .cv table.table-cv tbody, .cv table.table-cv tr, .cv table.table-cv td, .cv table.table-cv &gt; :not(caption) &gt; * &gt; * { border: 0 !important; border-top: 0 !important; border-bottom: 0 !important; box-shadow: none !important; } /* Remove the dot and location-pin decorations beside dates. */ .cv .date-column::before, .cv .date-column::after, .cv .date-column .location, .cv .date-column .iconlocation, .cv .date-column table::before, .cv .date-column table::after { display: none !important; content: none !important; } .cv li.list-group-item { list-style: none !important; } .cv li.list-group-item::marker, .cv li.list-group-item::before { content: "" !important; display: none !important; } /* Add a divider between individual entries. */ .cv ul.list-group-flush &gt; li.list-group-item { border: 0 !important; padding-top: 1rem !important; padding-bottom: 1rem !important; } .cv ul.list-group-flush &gt; li.list-group-item + li.list-group-item { border-top: 1px solid var(--global-divider-color) !important; } /* Add a divider between major sections. */ .cv &gt; a.anchor + .card { border-top: 1px solid var(--global-divider-color) !important; border-radius: 0 !important; } /* Keep the TOC scrollable without showing scrollbars. */ #toc-sidebar, .toc-sidebar, .toc, .js-toc { overflow-x: hidden !important; scrollbar-width: none !important; -ms-overflow-style: none !important; } #toc-sidebar::-webkit-scrollbar, .toc-sidebar::-webkit-scrollbar, .toc::-webkit-scrollbar, .js-toc::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; } /* Hide the original generated TOC labels. */ .js-toc a[href="#contact-information"], .js-toc a[href="#skills"] { font-size: 0 !important; } /* Display the customized TOC labels. */ .js-toc a[href="#contact-information"]::after { content: "Basics"; display: inline-block; font-size: 0.875rem; } .js-toc a[href="#skills"]::after { content: "Technical Skills"; display: inline-block; font-size: 0.875rem; } /* Arrange the TOC in the same order as the CV. */ .js-toc &gt; .toc-list { display: flex; flex-direction: column; } .js-toc .toc-list &gt; li:has(a[href="#contact-information"]) { order: 1; } .js-toc .toc-list &gt; li:has(a[href="#education"]) { order: 2; } .js-toc .toc-list &gt; li:has(a[href="#skills"]) { order: 3; } .js-toc .toc-list &gt; li:has(a[href="#experience"]) { order: 4; } .js-toc .toc-list &gt; li:has(a[href="#projects"]) { order: 5; } "&gt; <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
   :root {
     --max-content-width: 930px;
   }
 </style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.36.4/dist/tocbot.css" integrity="sha256-zTN0r+0OKaIv2xqeNNIYxNk0pWJ6+IqPGc1iDgVzWF0=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="/assets/img/logo.png?v=f67835ddaba013c75bf1f0ac8eddd613"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="stylesheet" href="/assets/css/al-folio-cv.css?v=734ded6bdb6d549b12085aded7cf1c5e"> <link rel="canonical" href="https://declanwhchan.github.io/cv/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
     initTheme();
   </script> </p> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Declan Chan </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item active"> <a class="nav-link" href="/cv/">cv <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">more </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/asdf/">asdf</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/asdf/">asdf</a> </div> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top toc toc-sidebar" aria-label="Table of contents" data-toc-collapse="expanded" data-toc-collapse-depth=""></nav> </div> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title"> cv <a href="/assets/pdf/cv.pdf" target="_blank" rel="noopener noreferrer" class="float-right"> <i class="fa-solid fa-file-pdf"></i> </a> </h1> <p class="post-description">Last updated: 2026-07-21 <style>
-  /* Use the website font and regular-weight titles. */
-  .cv h3.card-title,
+  /* Arrange the visible CV sections. */
+  .cv {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .cv > * {
+    order: 99;
+  }
+
+  .cv > .card:first-of-type {
+    order: 1;
+  }
+
+  .cv > #education,
+  .cv > #education + .card {
+    order: 2;
+  }
+
+  .cv > #skills,
+  .cv > #skills + .card {
+    order: 3;
+  }
+
+  .cv > #experience,
+  .cv > #experience + .card {
+    order: 4;
+  }
+
+  .cv > #projects,
+  .cv > #projects + .card {
+    order: 5;
+  }
+
+  /* Use regular weight and the site's normal font for titles. */
+  .cv .card > h3.card-title,
   .cv h6.title {
     font-family: inherit !important;
     font-weight: 400 !important;
   }
 
-  /* Remove borders and lines surrounding date badges. */
+  /* Rename Contact Information to Basics. */
+  .cv > .card:first-of-type > h3.card-title {
+    font-size: 0 !important;
+  }
+
+  .cv > .card:first-of-type > h3.card-title::after {
+    content: "Basics";
+    display: block;
+    font-family: inherit;
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  /* Rename Skills to Technical Skills. */
+  .cv > #skills + .card > h3.card-title {
+    font-size: 0 !important;
+  }
+
+  .cv > #skills + .card > h3.card-title::after {
+    content: "Technical Skills";
+    display: block;
+    font-family: inherit;
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  /* Rename the Professional Title row to Socials. */
+  .cv > .card:first-of-type table tr:nth-child(2) td:first-child b {
+    font-size: 0 !important;
+  }
+
+  .cv > .card:first-of-type
+    table
+    tr:nth-child(2)
+    td:first-child
+    b::after {
+    content: "Socials";
+    font-size: 1rem;
+  }
+
+  /* Remove all lines surrounding date badges. */
   .cv table.table-cv,
   .cv table.table-cv tbody,
   .cv table.table-cv tr,
@@ -24,34 +100,45 @@
     box-shadow: none !important;
   }
 
-  /* Remove timeline dots, pins, and other date-column decorations. */
+  /* Remove the dot and location-pin decorations beside dates. */
   .cv .date-column::before,
   .cv .date-column::after,
   .cv .date-column .location,
-  .cv .date-column .iconlocation {
+  .cv .date-column .iconlocation,
+  .cv .date-column table::before,
+  .cv .date-column table::after {
     display: none !important;
     content: none !important;
   }
 
-  /* Remove the template's default entry borders. */
+  .cv li.list-group-item {
+    list-style: none !important;
+  }
+
+  .cv li.list-group-item::marker,
+  .cv li.list-group-item::before {
+    content: "" !important;
+    display: none !important;
+  }
+
+  /* Add a divider between individual entries. */
   .cv ul.list-group-flush > li.list-group-item {
     border: 0 !important;
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
   }
 
-  /* Add one divider between entries. */
   .cv ul.list-group-flush > li.list-group-item + li.list-group-item {
     border-top: 1px solid var(--global-divider-color) !important;
   }
 
-  /* Add a divider between major CV sections. */
+  /* Add a divider between major sections. */
   .cv > a.anchor + .card {
     border-top: 1px solid var(--global-divider-color) !important;
     border-radius: 0 !important;
   }
 
-  /* Hide TOC scrollbars without disabling scrolling. */
+  /* Keep the TOC scrollable without showing scrollbars. */
   #toc-sidebar,
   .toc-sidebar,
   .toc,
@@ -69,104 +156,52 @@
     width: 0 !important;
     height: 0 !important;
   }
-</style> <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const cv = document.querySelector(".cv");
-    if (!cv) return;
 
-    const findHeading = (title) =>
-      Array.from(
-        cv.querySelectorAll(":scope > .card > h3.card-title")
-      ).find((heading) => heading.textContent.trim() === title);
+/* Hide the original generated TOC labels. */
+.js-toc a[href="#contact-information"],
+.js-toc a[href="#skills"] {
+  font-size: 0 !important;
+}
 
-    const renameSection = (oldTitle, newTitle) => {
-      const heading = findHeading(oldTitle);
-      if (heading) heading.textContent = newTitle;
-    };
+/* Display the customized TOC labels. */
+.js-toc a[href="#contact-information"]::after {
+  content: "Basics";
+  display: inline-block;
+  font-size: 0.875rem;
+}
 
-    renameSection("Contact Information", "Basics");
-    renameSection("Skills", "Technical Skills");
-    renameSection("Awards", "ECs");
+.js-toc a[href="#skills"]::after {
+  content: "Technical Skills";
+  display: inline-block;
+  font-size: 0.875rem;
+}
 
-    /* Add social links because this renderer ignores basics.profiles. */
-    const basicsHeading = findHeading("Basics");
-    const basicsCard = basicsHeading?.closest(".card");
-    const basicsTable = basicsCard?.querySelector("table tbody");
+  /* Arrange the TOC in the same order as the CV. */
+  .js-toc > .toc-list {
+    display: flex;
+    flex-direction: column;
+  }
 
-    const addSocialRow = (label, text, url) => {
-      if (!basicsTable || basicsCard.querySelector(`a[href="${url}"]`)) return;
+  .js-toc .toc-list > li:has(a[href="#contact-information"]) {
+    order: 1;
+  }
 
-      const row = document.createElement("tr");
+  .js-toc .toc-list > li:has(a[href="#education"]) {
+    order: 2;
+  }
 
-      const labelCell = document.createElement("td");
-      labelCell.className = "p-1 pr-2 font-weight-bold";
+  .js-toc .toc-list > li:has(a[href="#skills"]) {
+    order: 3;
+  }
 
-      const labelElement = document.createElement("b");
-      labelElement.textContent = label;
-      labelCell.append(labelElement);
+  .js-toc .toc-list > li:has(a[href="#experience"]) {
+    order: 4;
+  }
 
-      const valueCell = document.createElement("td");
-      valueCell.className = "p-1 pl-2 font-weight-light";
-
-      const link = document.createElement("a");
-      link.href = url;
-      link.textContent = text;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-
-      valueCell.append(link);
-      row.append(labelCell, valueCell);
-      basicsTable.append(row);
-    };
-
-    addSocialRow(
-      "LinkedIn",
-      "declanwhchan",
-      "https://www.linkedin.com/in/declanwhchan/"
-    );
-
-    addSocialRow(
-      "GitHub",
-      "declanwhchan",
-      "https://github.com/declanwhchan"
-    );
-
-    /* Enforce the requested section order. */
-    const desiredOrder = [
-      "Basics",
-      "Education",
-      "Technical Skills",
-      "Experience",
-      "Projects",
-      "ECs"
-    ];
-
-    const cards = Array.from(cv.querySelectorAll(":scope > .card"));
-
-    for (const title of desiredOrder) {
-      const card = cards.find(
-        (element) =>
-          element
-            .querySelector(":scope > h3.card-title")
-            ?.textContent.trim() === title
-      );
-
-      if (!card) continue;
-
-      const anchor = card.previousElementSibling;
-
-      if (anchor?.classList.contains("anchor")) {
-        cv.append(anchor);
-      }
-
-      cv.append(card);
-    }
-
-    window.setTimeout(() => {
-      window.tocbot?.refresh?.();
-    }, 0);
-  });
-</script> </p> </header> <article> <div class="cv"> <div class="card mt-3 p-3"> <h3 class="card-title font-weight-medium">Contact Information</h3> <table class="table table-cv table-sm table-borderless"> <tr> <td class="p-1 pr-2 font-weight-bold"><b>Name</b></td> <td class="p-1 pl-2 font-weight-light">Declan Chan</td> </tr> <tr> <td class="p-1 pr-2 font-weight-bold"><b>Website</b></td> <td class="p-1 pl-2 font-weight-light"> <a href="https://declanwhchan.github.io/" target="_blank">https://declanwhchan.github.io/</a> </td> </tr> </table> </div> <a class="anchor" id="experience"></a> <div class="card mt-3 p-3"> <h3 class="card-title font-weight-medium">Experience</h3> <div> <ul class="card-text font-weight-light list-group list-group-flush"> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2026 - Present </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> Machine Learning Researcher </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem"> Autonomous Discovery of Alloys </h6> <ul class="items"> <li> <span class="item">Designed experiments to evaluate the robustness of machine learning force fields. </span> </li> <li> <span class="item">Benchmarked MLFF predictions against density functional theory calculations. </span> </li> <li> <span class="item">Performed large-scale experiments on Canada’s Fir HPC cluster. </span> </li> </ul> </div> </div> </li> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2026 - Present </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> Space Systems Engineer </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem"> University of Toronto Aerospace Team </h6> <ul class="items"> <li> <span class="item">Developed software for CubeSat attitude determination and control systems. </span> </li> <li> <span class="item">Developed Python modules for attitude dynamics and flight simulation. </span> </li> <li> <span class="item">Simulated magnetic environments using a Helmholtz cage and MATLAB. </span> </li> </ul> </div> </div> </li> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2025 - 2026 </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> Mechanical Design Engineer </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem"> Robotics for Space Exploration </h6> <ul class="items"> <li> <span class="item">Designed robotic arm components using CAD for 3D modelling. </span> </li> <li> <span class="item">Performed finite element analysis in SolidWorks Simulation to evaluate designs. </span> </li> </ul> </div> </div> </li> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2021 - Present </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> Senior Instructor </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem"> Northern Karate Schools </h6> <ul class="items"> <li> <span class="item">Yondan: Certified 4th Degree Black Belt. </span> </li> <li> <span class="item">Gold medal at the Toronto International Tournament of Martial Arts Champions. </span> </li> <li> <span class="item">Teach 100+ students each week through group and private lessons. </span> </li> </ul> </div> </div> </li> </ul> </div> </div> <a class="anchor" id="education"></a> <div class="card mt-3 p-3"> <h3 class="card-title font-weight-medium">Education</h3> <div> <ul class="card-text font-weight-light list-group list-group-flush"> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2025 - Present </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> BASc </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">University of Toronto</h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">Engineering Science</h6> <ul class="items"> <li> <span class="item">Dean’s Honours List (all semesters) </span> </li> </ul> </div> </div> </li> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2021 - 2025 </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> IB Diploma Programme </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">Maple High School</h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">IB Diploma Programme</h6> <ul class="items"> <li> <span class="item">IB Score: 45/45 </span> </li> <li> <span class="item">OSSD Top 6: 99.67% </span> </li> <li> <span class="item">Director’s Achievement Award </span> </li> </ul> </div> </div> </li> </ul> </div> </div> <a class="anchor" id="awards"></a> <div class="card mt-3 p-3"> <h3 class="card-title font-weight-medium">Awards</h3> <div> <ul class="card-text font-weight-light list-group list-group-flush"> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2022</span> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4">Rubik's Cube Competitions</h6> <p class="ml-1 ml-md-4"></p> <ul> <li>Top 90 in Canada for 3x3x3 fewest moves.</li> <li>Volunteered as a judge for the World Cube Association.</li> <li>Club President who taught beginners and organized school-wide competitions.</li> </ul> </div> </div> </li> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2022</span> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4">Varsity Volleyball</h6> <p class="ml-1 ml-md-4"></p> <ul> <li>Team Captain in Grade 10 and 12.</li> <li>Tier 1 YRAA Championship junior varsity 2nd place.</li> <li>Tier 1 YRAA Championship senior varsity 2nd place.</li> </ul> </div> </div> </li> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2019</span> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4">Rep Volleyball</h6> <p class="ml-1 ml-md-4"></p> <ul> <li>Team Captain and 2X MVP.</li> <li>Silver medal in Canada’s 2023 Youth Nationals.</li> </ul> </div> </div> </li> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2014</span> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4">Music Performance</h6> <p class="ml-1 ml-md-4"></p> <ul> <li>Theory and Instrumental: Level 10 RCM comprehensive certificate (First Class Honors).</li> <li>Level 10 RCM practical piano certificate (First Class Honors with Distinction).</li> <li>Level 8 RCM practical violin certificate (First Class Honors with Distinction).</li> </ul> </div> </div> </li> </ul> </div> </div> <a class="anchor" id="skills"></a> <div class="card mt-3 p-3"> <h3 class="card-title font-weight-medium">Skills</h3> <div> <div class="card-text font-weight-light"> <div class="skill-item"> <strong>Languages:</strong> Python, C, MATLAB, Bash </div> <div class="skill-item"> <strong>Design:</strong> SolidWorks, OnShape </div> <div class="skill-item"> <strong>Tools:</strong> Git, Linux, Slurm </div> </div> <style>
+  .js-toc .toc-list > li:has(a[href="#projects"]) {
+    order: 5;
+  }
+</style> </p> </header> <article> <div class="cv"> <div class="card mt-3 p-3"> <h3 class="card-title font-weight-medium">Contact Information</h3> <table class="table table-cv table-sm table-borderless"> <tr> <td class="p-1 pr-2 font-weight-bold"><b>Name</b></td> <td class="p-1 pl-2 font-weight-light">Declan Chan</td> </tr> <tr> <td class="p-1 pr-2 font-weight-bold"><b>Professional Title</b></td> <td class="p-1 pl-2 font-weight-light"> <a href="https://www.linkedin.com/in/declanwhchan/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="https://github.com/declanwhchan" target="_blank" rel="noopener noreferrer">GitHub</a> </td> </tr> <tr> <td class="p-1 pr-2 font-weight-bold"><b>Website</b></td> <td class="p-1 pl-2 font-weight-light"> <a href="https://declanwhchan.github.io/" target="_blank">https://declanwhchan.github.io/</a> </td> </tr> </table> </div> <a class="anchor" id="experience"></a> <div class="card mt-3 p-3"> <h3 class="card-title font-weight-medium">Experience</h3> <div> <ul class="card-text font-weight-light list-group list-group-flush"> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2026 - Present </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> Machine Learning Researcher </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem"> Autonomous Discovery of Alloys </h6> <ul class="items"> <li> <span class="item">Designed experiments to evaluate the robustness of machine learning force fields. </span> </li> <li> <span class="item">Benchmarked MLFF predictions against density functional theory calculations. </span> </li> <li> <span class="item">Performed large-scale experiments on Canada’s Fir HPC cluster. </span> </li> </ul> </div> </div> </li> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2026 - Present </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> Space Systems Engineer </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem"> University of Toronto Aerospace Team </h6> <ul class="items"> <li> <span class="item">Developed software for CubeSat attitude determination and control systems. </span> </li> <li> <span class="item">Developed Python modules for attitude dynamics and flight simulation. </span> </li> <li> <span class="item">Simulated magnetic environments using a Helmholtz cage and MATLAB. </span> </li> </ul> </div> </div> </li> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2025 - 2026 </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> Mechanical Design Engineer </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem"> Robotics for Space Exploration </h6> <ul class="items"> <li> <span class="item">Designed robotic arm components using CAD for 3D modelling. </span> </li> <li> <span class="item">Performed finite element analysis in SolidWorks Simulation to evaluate designs. </span> </li> </ul> </div> </div> </li> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2021 - Present </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> Senior Instructor </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem"> Northern Karate Schools </h6> <ul class="items"> <li> <span class="item">Yondan: Certified 4th Degree Black Belt. </span> </li> <li> <span class="item">Gold medal at the Toronto International Tournament of Martial Arts Champions. </span> </li> <li> <span class="item">Teach 100+ students each week through group and private lessons. </span> </li> </ul> </div> </div> </li> </ul> </div> </div> <a class="anchor" id="education"></a> <div class="card mt-3 p-3"> <h3 class="card-title font-weight-medium">Education</h3> <div> <ul class="card-text font-weight-light list-group list-group-flush"> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2025 - Present </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> BASc </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">University of Toronto</h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">Engineering Science</h6> <ul class="items"> <li> <span class="item">Dean’s Honours List (all semesters) </span> </li> </ul> </div> </div> </li> <li class="list-group-item"> <div class="row"> <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column"> <table class="table-cv"> <tbody> <tr> <td> <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px"> 2021 - 2025 </span> </td> </tr> <tr> <td> <p class="location"> <i class="fa-solid fa-location-dot iconlocation"></i> </p> </td> </tr> </tbody> </table> </div> <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0"> <h6 class="title font-weight-bold ml-1 ml-md-4"> IB Diploma Programme </h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">Maple High School</h6> <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">IB Diploma Programme</h6> <ul class="items"> <li> <span class="item">IB Score: 45/45 </span> </li> <li> <span class="item">OSSD Top 6: 99.67% </span> </li> <li> <span class="item">Director’s Achievement Award </span> </li> </ul> </div> </div> </li> </ul> </div> </div> <a class="anchor" id="skills"></a> <div class="card mt-3 p-3"> <h3 class="card-title font-weight-medium">Skills</h3> <div> <div class="card-text font-weight-light"> <div class="skill-item"> <strong>Languages:</strong> Python, C, MATLAB, Bash </div> <div class="skill-item"> <strong>Design:</strong> SolidWorks, OnShape </div> <div class="skill-item"> <strong>Tools:</strong> Git, Linux, Slurm </div> </div> <style>
   .skill-item {
     padding: 0.5rem 0;
   }
