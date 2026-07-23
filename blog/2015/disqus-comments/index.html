@@ -15,70 +15,19 @@
       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
-  </script> <noscript> Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a> </noscript> </div> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Declan Chan. <script src="/assets/js/cursor-glow.js"></script> <span class="footer-content"> <span>© 2026 Declan Chan</span> <span aria-hidden="true">·</span> <span class="footer-view-pill"> <i class="fa-regular fa-eye" aria-hidden="true"></i> <span id="site-view-count">—</span> </span> </span> <script>
-  (() => {
-    document.querySelectorAll("footer").forEach((footer) => {
-      const walker = document.createTreeWalker(
-        footer,
-        NodeFilter.SHOW_TEXT,
-      );
-
-      while (walker.nextNode()) {
-        const textNode = walker.currentNode;
-
-        textNode.nodeValue = textNode.nodeValue.replace(
-          /©\s*Copyright\s+(\d{4})\s+Declan Chan\./,
-          "© $1 Declan Chan",
-        );
-      }
-    });
-
+  </script> <noscript> Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a> </noscript> </div> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Declan Chan. <script src="/assets/js/cursor-glow.js"></script> <span class="footer-view-pill" title="Unique visitors" aria-label="Unique visitors"> <span id="site-view-count">—</span> <i class="fa-regular fa-eye" aria-hidden="true"></i> </span> <script>
+  function updateDeclanVisitorCount(response) {
     const counterElement = document.getElementById("site-view-count");
-    if (!counterElement) return;
+    const count = Number(response.value);
 
-    const productionHost = "declanwhchan.github.io";
-    const storageKey = "declanwhchan-visitor-counted-v1";
-    const counterUrl =
-      "https://api.counterapi.dev/v1/declanwhchan-github-io/site-visitors";
-
-    const hasBeenCounted = localStorage.getItem(storageKey) === "true";
-    const isProduction = window.location.hostname === productionHost;
-    const requestUrl =
-      isProduction && !hasBeenCounted ? `${counterUrl}/up` : counterUrl;
-
-    fetch(requestUrl)
-      .then((response) => {
-        if (!response.ok) throw new Error("Counter request failed");
-        return response.json();
-      })
-      .then((result) => {
-        const count = result?.data?.up_count;
-
-        if (typeof count !== "number") {
-          throw new Error("Invalid counter response");
-        }
-
-        counterElement.textContent = count.toLocaleString("en-CA");
-
-        if (isProduction && !hasBeenCounted) {
-          localStorage.setItem(storageKey, "true");
-        }
-      })
-      .catch(() => {
-        counterElement.textContent = "—";
-      });
-  })();
-</script> <style>
+    if (counterElement && Number.isFinite(count)) {
+      counterElement.textContent = count.toLocaleString("en-CA");
+    }
+  }
+</script> <script async src="https://counterapi.com/api/declanwhchan.github.io/view/site-visitors?callback=updateDeclanVisitorCount&amp;unique=true"></script> <style>
   footer {
     border-top: 1px solid var(--global-divider-color) !important;
     background: var(--global-bg-color) !important;
-  }
-
-  /* Hide al-folio's generated copyright text. */
-  footer .container {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
-    font-size: 0 !important;
   }
 
   /* Restore the font for your custom footer. */
@@ -369,6 +318,11 @@ ninja.data = [{
           description: "English A Language &amp; Literature Higher Level: Essay",
           section: "Ib",handler: () => {
               window.location.href = "/ib/english_hle/";
+            },},{id: "ib-english-io",
+          title: 'English IO',
+          description: "English A Language &amp; Literature Higher Level: Individual Oral",
+          section: "Ib",handler: () => {
+              window.location.href = "/ib/english_io/";
             },},{id: "ib-math-ia",
           title: 'Math IA',
           description: "Mathematics Analysis and Approaches Standard Level: Internal Assessment",
