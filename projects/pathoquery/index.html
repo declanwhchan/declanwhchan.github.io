@@ -4,7 +4,99 @@
   }
 </style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="/assets/img/logo.png?v=f67835ddaba013c75bf1f0ac8eddd613"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://declanwhchan.github.io/projects/pathoquery/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
     initTheme();
-  </script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Declan Chan </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/">projects <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">more </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/engsci/">engsci</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/ib/">ib</a> </div> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">PathoQuery</h1> <p class="post-description">RAG-powered disease visualization platform trained on PubMed literature</p> </header> <article> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Declan Chan. <script src="/assets/js/cursor-glow.js"></script> <style>
+  </script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Declan Chan </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/">projects <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">more </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/engsci/">engsci</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/ib/">ib</a> </div> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">PathoQuery</h1> <p class="post-description">RAG-powered disease visualization platform trained on PubMed literature</p> </header> <article> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Declan Chan. <script src="/assets/js/cursor-glow.js"></script> <span class="footer-content"> <span>© 2026 Declan Chan</span> <span aria-hidden="true">·</span> <span class="footer-view-pill"> <i class="fa-regular fa-eye" aria-hidden="true"></i> <span id="site-view-count">—</span> </span> </span> <script>
+  (() => {
+    document.querySelectorAll("footer").forEach((footer) => {
+      const walker = document.createTreeWalker(
+        footer,
+        NodeFilter.SHOW_TEXT,
+      );
+
+      while (walker.nextNode()) {
+        const textNode = walker.currentNode;
+
+        textNode.nodeValue = textNode.nodeValue.replace(
+          /©\s*Copyright\s+(\d{4})\s+Declan Chan\./,
+          "© $1 Declan Chan",
+        );
+      }
+    });
+
+    const counterElement = document.getElementById("site-view-count");
+    if (!counterElement) return;
+
+    const productionHost = "declanwhchan.github.io";
+    const storageKey = "declanwhchan-visitor-counted-v1";
+    const counterUrl =
+      "https://api.counterapi.dev/v1/declanwhchan-github-io/site-visitors";
+
+    const hasBeenCounted = localStorage.getItem(storageKey) === "true";
+    const isProduction = window.location.hostname === productionHost;
+    const requestUrl =
+      isProduction && !hasBeenCounted ? `${counterUrl}/up` : counterUrl;
+
+    fetch(requestUrl)
+      .then((response) => {
+        if (!response.ok) throw new Error("Counter request failed");
+        return response.json();
+      })
+      .then((result) => {
+        const count = result?.data?.up_count;
+
+        if (typeof count !== "number") {
+          throw new Error("Invalid counter response");
+        }
+
+        counterElement.textContent = count.toLocaleString("en-CA");
+
+        if (isProduction && !hasBeenCounted) {
+          localStorage.setItem(storageKey, "true");
+        }
+      })
+      .catch(() => {
+        counterElement.textContent = "—";
+      });
+  })();
+</script> <style>
+  footer {
+    border-top: 1px solid var(--global-divider-color) !important;
+    background: var(--global-bg-color) !important;
+  }
+
+  /* Hide al-folio's generated copyright text. */
+  footer .container {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    font-size: 0 !important;
+  }
+
+  /* Restore the font for your custom footer. */
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+
+    color: var(--global-text-color-light);
+    font-size: 0.875rem !important;
+  }
+
+  .footer-view-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 999px;
+
+    background: transparent;
+    color: var(--global-theme-color);
+    font-size: 0.875rem !important;
+    font-variant-numeric: tabular-nums;
+  }
+
   #back-to-top {
     box-sizing: border-box !important;
     display: flex !important;
