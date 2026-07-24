@@ -7,36 +7,11 @@ first_name: Declan
 middle_name:
 last_name: Chan
 contact_note: >
-  Ping me.
+  Let's connect.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: |
   <script src="/assets/js/cursor-glow.js"></script>
-
-  <span
-    class="footer-view-pill"
-    title="Unique visitors"
-    aria-label="Unique visitors"
-  >
-    <span id="site-view-count">—</span>
-    <i class="fa-regular fa-eye" aria-hidden="true"></i>
-  </span>
-
-  <script>
-    function updateDeclanVisitorCount(response) {
-      const counterElement = document.getElementById("site-view-count");
-      const count = Number(response.value);
-
-      if (counterElement && Number.isFinite(count)) {
-        counterElement.textContent = count.toLocaleString("en-CA");
-      }
-    }
-  </script>
-
-  <script
-    async
-    src="https://counterapi.com/api/declanwhchan.github.io/view/site-visitors?callback=updateDeclanVisitorCount&unique=true"
-  ></script>
 
   <style>
     footer {
@@ -54,21 +29,6 @@ footer_text: |
 
       color: var(--global-text-color-light);
       font-size: 0.875rem !important;
-    }
-
-    .footer-view-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-
-      padding: 0.2rem 0.6rem;
-      border: 1px solid var(--global-divider-color);
-      border-radius: 999px;
-
-      background: transparent;
-      color: var(--global-theme-color);
-      font-size: 0.875rem !important;
-      font-variant-numeric: tabular-nums;
     }
 
     #back-to-top {
@@ -248,7 +208,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Blog # blog_name will be displayed in your blog page
+blog_name: DC Blog # blog_name will be displayed in your blog page
 blog_description: Just keep swimming.
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts

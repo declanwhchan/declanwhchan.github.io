@@ -7,6 +7,22 @@ nav: false
 nav_order: 3
 display_categories: [Chemistry HL, Economics HL, English A Lang & Lit HL, French B SL, Mathematics AA SL, Physics SL, EE + TOK]
 horizontal: false
+
+_styles: |
+  .projects .card picture {
+    display: block;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .projects .card picture img,
+  .projects .card img.card-img-top {
+    display: block;
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    object-position: center;
+  }
 ---
 
 <!-- pages/projects.md -->

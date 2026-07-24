@@ -5,8 +5,24 @@ permalink: /engsci/
 description: A collection of Engineering Science notes.
 nav: false
 nav_order: 3
-display_categories: [Year 1, Year 2]
+display_categories: [Year 1, Year 2, Year 3, Year 4]
 horizontal: false
+
+_styles: |
+  .projects .card picture {
+    display: block;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .projects .card picture img,
+  .projects .card img.card-img-top {
+    display: block;
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    object-position: center;
+  }
 ---
 
 <!-- pages/projects.md -->
