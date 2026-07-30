@@ -1,11 +1,13 @@
-# Social links and contact information
-
+# Documents and contact
 cv_pdf: /assets/pdf/cv.pdf
 email: declan.chan@mail.utoronto.ca
+# work_url: https://example.com
+
+# Professional profiles
 github_username: declanwhchan
 linkedin_username: declanwhchan
 
-# Add these later if you use them:
-# github_username:
-# linkedin_username:
+# Academic and research profiles
+orcid_id: 0000-0000-0000-0000
 # scholar_userid:
+# arxiv_id:

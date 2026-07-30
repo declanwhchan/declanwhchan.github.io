@@ -7,3 +7,7 @@ redirect: https://declanwhchan.github.io/mlff_attack_data_collection/
 importance: 2
 category: work
 ---
+
+<script type="text/javascript">
+  window.open("https://declanwhchan.github.io/mlff_attack_data_collection/", "_blank");
+</script>
