@@ -50,8 +50,8 @@ latest_posts:
   setInterval(updateTorontoTime, 1000);
 </script>
 
-I'm currently an [Engineering Science](https://engsci.utoronto.ca/) undergraduate student at the University of Toronto.
+I'm currently an undergraduate student in [Engineering Science](https://engsci.utoronto.ca/) at the University of Toronto.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eros libero, hendrerit a tincidunt quis, bibendum ac lorem. Phasellus et accumsan lacus. Sed congue gravida sem, ac consequat diam auctor sit amet. Pellentesque non accumsan neque. Nam tempor mauris non lacus efficitur, ut vulputate nunc lobortis. Suspendisse potenti. Quisque venenatis, augue ut vestibulum laoreet, nunc eros tempus nibh, eu lobortis eros orci eu sem.
+I'm interested in building reliable computational tools for scientific discovery and engineering systems. My work spans aerospace, robotics, machine learning, and materials science, with a focus on translating theoretical concepts into testable software.
 
-Fusce feugiat turpis ornare molestie egestas. Quisque sed dui eu sapien tempus dignissim. Quisque posuere bibendum turpis ac sollicitudin. Nunc porttitor orci in nisl porta, ut pellentesque mi sollicitudin. Sed rhoncus risus lacinia, maximus tortor a, mollis turpis. Curabitur sed cursus nulla. Ut efficitur feugiat tortor ac porttitor. Quisque nec tortor id neque fringilla auctor. Suspendisse potenti. Cras non ullamcorper eros. Aenean quis tellus volutpat, sagittis nibh a, ullamcorper nibh. Vestibulum interdum vulputate ante, tincidunt pharetra odio ullamcorper nec. Proin ut purus laoreet, laoreet neque sed, volutpat massa.
+As a research fellow with the Autonomous Discovery of Alloys Group, I studied the robustness of machine learning force fields, benchmarked predictions against density functional theory, and ran large-scale experiments on high-performance computing clusters. With the University of Toronto Aerospace Team, I developed attitude determination and control software for CubeSats including Python simulation for spacecraft dynamics. Beyond research, I worked with Robotics for Space Exploration on mechanical design.

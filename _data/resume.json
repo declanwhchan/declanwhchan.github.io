@@ -63,7 +63,7 @@
       "endDate": "Present",
       "highlights": [
         "Developed software for CubeSat attitude determination and control systems.",
-        "Developed Python modules for attitude dynamics and flight simulation.",
+        "Built Python modules for attitude dynamics and flight simulation.",
         "Simulated magnetic environments using a Helmholtz cage and MATLAB."
       ]
     },
@@ -91,7 +91,7 @@
   ],
   "projects": [
     {
-      "name": "Attacks Against Machine Learning Force Fields",
+      "name": "Machine Learning Force Field Attacks",
       "startDate": "2026",
       "endDate": "Present",
       "highlights": [
@@ -127,7 +127,7 @@
       ]
     },
     {
-      "name": "NFT Generation",
+      "name": "Generative Art",
       "startDate": "2021",
       "endDate": "2022",
       "highlights": [
