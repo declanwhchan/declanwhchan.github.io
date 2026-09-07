@@ -12,7 +12,7 @@ I presented my summer research on the robustness of machine learning force field
 The project examines whether MLFFs can reliably return perturbed atomic structures to their original configurations. It was a valuable opportunity to discuss this work with students, faculty, and industry professionals while learning about research from across engineering. The presentation slides are embedded below.
 
 <iframe
-  src="{{ '/assets/pdf/unerd_mlff_attack_presentation.pdf' | relative_url }}"
+  src="{{ '/assets/pdf/unerd_presentation.pdf' | relative_url }}"
   title="MLFF attack presentation from UnERD 2026"
   width="100%"
   height="720"
@@ -20,7 +20,7 @@ The project examines whether MLFFs can reliably return perturbed atomic structur
 ></iframe>
 
 <p style="text-align: center; margin-top: 0.75rem;">
-  <a href="{{ '/assets/pdf/unerd_mlff_attack_presentation.pdf' | relative_url }}">Download the slides (PDF)</a>
+  <a href="{{ '/assets/pdf/unerd_presentation.pdf' | relative_url }}">Download the slides (PDF)</a>
 </p>
 
 ## Research motivation

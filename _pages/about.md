@@ -52,6 +52,6 @@ latest_posts:
 
 I'm currently an undergraduate student in [Engineering Science](https://engsci.utoronto.ca/) at the University of Toronto.
 
-I'm interested in building reliable computational tools for scientific discovery and engineering systems. My work spans aerospace, robotics, machine learning, and materials science, with a focus on translating theoretical concepts into testable software.
+I’m interested in building reliable computational tools for scientific discovery and engineering systems. My work spans aerospace, robotics, machine learning, and materials science, with a focus on translating theoretical concepts into testable software.
 
-As a research fellow with the Autonomous Discovery of Alloys Group, I studied the robustness of machine learning force fields, benchmarked predictions against density functional theory, and ran large-scale experiments on high-performance computing clusters. With the University of Toronto Aerospace Team, I developed attitude determination and control software for CubeSats including Python simulation for spacecraft dynamics. Beyond research, I worked with Robotics for Space Exploration on mechanical design.
+As a research fellow with the [AutoDIAL](https://autodiallab.ca/) lab, I studied the robustness of machine learning force fields, benchmarked predictions against density functional theory, and ran large-scale experiments on high-performance computing clusters. With [UTAT](https://utat.ca/), I developed attitude determination and control software for CubeSats, including Python simulations of spacecraft dynamics. Beyond research, I worked with [RSX](https://rsx-utoronto.github.io/rsx-website/) on mechanical design.
