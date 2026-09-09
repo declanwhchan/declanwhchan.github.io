@@ -410,7 +410,7 @@ Technical Skills
               </span>
             {% elsif entry.startDate %}
               <span class="custom-cv-date-badge">
-                {{ entry.startDate }}{% if entry.endDate %} – {{ entry.endDate }}{% endif %}
+                {{ entry.startDate }}{% if entry.endDate and entry.endDate != entry.startDate %} – {{ entry.endDate }}{% endif %}
               </span>
             {% endif %}
           </div>
