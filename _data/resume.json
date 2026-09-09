@@ -93,7 +93,7 @@
   "projects": [
     {
       "name": "Machine Learning Force Field Attacks",
-      "date": "2026",
+      "endDate": "2026",
       "highlights": [
         "Developed open-source software to generate gradient-based adversarial attacks against MLFFs.",
         "Built Python/PyTorch pipelines to process Materials Project and Li-C-O datasets.",
@@ -102,7 +102,7 @@
     },
     {
       "name": "Neural Lab",
-      "date": "2026",
+      "endDate": "2026",
       "highlights": [
         "Developed a configurable PyTorch image-classification pipeline supporting reproducible training.",
         "Implemented workflows for MNIST, Fashion-MNIST, CIFAR-10, and SVHN.",
@@ -111,7 +111,7 @@
     },
     {
       "name": "Medical RAG Platform",
-      "date": "2026",
+      "endDate": "2026",
       "highlights": [
         "Developed an interactive platform visualizing human disease progression.",
         "Implemented a retrieval-augmented generation system using PubMed data via IBM watsonx.ai.",
@@ -120,7 +120,7 @@
     },
     {
       "name": "Bridge Design Optimization",
-      "date": "2025",
+      "endDate": "2025",
       "highlights": [
         "Optimized structural performance and prototyped a matboard bridge using Python.",
         "Ranked 1st in the cohort and 2nd in the Class of 2025 for CIV102."

@@ -401,7 +401,6 @@ Technical Skills
 <h2 id="projects" class="custom-cv-section-title">Projects</h2>
 
       {% for entry in resume.projects %}
-        {% assign end_date = entry.endDate | default: "Present" %}
 
         <div class="custom-cv-entry">
           <div class="custom-cv-date">
@@ -411,7 +410,7 @@ Technical Skills
               </span>
             {% elsif entry.startDate %}
               <span class="custom-cv-date-badge">
-                {{ entry.startDate }} – {{ end_date }}
+                {{ entry.startDate }}{% if entry.endDate %} – {{ entry.endDate }}{% endif %}
               </span>
             {% endif %}
           </div>
