@@ -79,4 +79,4 @@ Future work could apply this framework to additional MLFF architectures and indi
 
 ## Acknowledgements
 
-I am grateful to Professor Jae for supervising this research, Dr. Ashley Dale for her mentorship and guidance, and Dr. Dan McHaffie and Dr. Hao Wan for their suggestions and help with DFT.
+I am grateful to Professor Jason Hattrick-Simpers for supervising this research, Dr. Ashley Dale for her mentorship and guidance, and Dr. Dan McHaffie and Dr. Hao Wan for their suggestions and help with DFT.
