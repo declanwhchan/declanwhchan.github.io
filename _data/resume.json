@@ -1,16 +1,17 @@
 {
   "basics": {
     "name": "Declan Chan",
-    "label": "<a href=\"https://github.com/declanwhchan\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a> · <a href=\"https://www.linkedin.com/in/declanchan/\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a>",
-    "email": "declan.chan@mail.utoronto.ca",
+    "url": "https://declanwhchan.github.io",
     "profiles": [
       {
-        "network": "GitHub",
-        "url": "https://github.com/declanwhchan/"
+        "network": "LinkedIn",
+        "username": "declanchan",
+        "url": "https://www.linkedin.com/in/declanchan/"
       },
       {
-        "network": "LinkedIn",
-        "url": "https://www.linkedin.com/in/declanchan/"
+        "network": "GitHub",
+        "username": "declanwhchan",
+        "url": "https://github.com/declanwhchan"
       }
     ]
   },
@@ -20,41 +21,40 @@
       "institution": "University of Toronto",
       "startDate": "2025",
       "endDate": "Present",
-      "highlights": ["Dean’s Honours List (every semester)"]
+      "highlights": ["Dean's Honours List (all semesters)"]
     },
     {
       "studyType": "IB Diploma Programme",
       "institution": "Maple High School",
       "startDate": "2021",
       "endDate": "2025",
-      "highlights": ["IB Score: 45/45", "OSSD Top 6: 99.67%", "Director’s Achievement Award"]
+      "highlights": ["IB Score: 45/45"]
     }
   ],
   "skills": [
     {
       "name": "Languages",
-      "keywords": ["Python", "C", "MATLAB", "Bash", "SQL"]
+      "keywords": ["Python", "C", "SQL", "MATLAB", "Bash"]
     },
     {
-      "name": "Design",
-      "keywords": ["SolidWorks", "OnShape"]
+      "name": "Libraries/Frameworks",
+      "keywords": ["PyTorch", "NumPy", "Matplotlib", "ROS"]
     },
     {
       "name": "Tools",
-      "keywords": ["Git", "Linux", "Slurm"]
+      "keywords": ["Git", "Linux", "Slurm", "SQLite", "SolidWorks", "OnShape"]
     }
   ],
   "work": [
     {
-      "position": "Research Fellow",
-      "name": "Autonomous Discovery of Alloys",
-      "startDate": "2026",
+      "position": "Software Developer",
+      "name": "Robotics for Space Exploration",
+      "startDate": "2025",
       "endDate": "Present",
       "highlights": [
-        "Designed experiments to evaluate the robustness of machine learning force fields.",
-        "Benchmarked model predictions against density functional theory relaxations.",
-        "Performed large-scale experiments using Canada’s Fir HPC cluster.",
-        "Presented findings at Undergraduate Engineering Research Day Conference."
+        "Developed Python software in ROS 2 for autonomous control of a 6-DOF robotic arm.",
+        "Implemented inverse kinematics and motion planning using MoveIt 2 and TRAC-IK.",
+        "Designed robotic arm parts using 3D CAD and performed finite element analysis."
       ]
     },
     {
@@ -63,19 +63,21 @@
       "startDate": "2026",
       "endDate": "Present",
       "highlights": [
-        "Developed software for CubeSat attitude determination and control.",
-        "Built Python modules for attitude dynamics and flight simulation.",
+        "Developed Python software for CubeSat attitude determination and control algorithm testing.",
+        "Developed modular Python tools for attitude dynamics and flight simulation.",
         "Simulated magnetic environments using a Helmholtz cage and MATLAB."
       ]
     },
     {
-      "position": "Mechanical Design Engineer",
-      "name": "Robotics for Space Exploration",
-      "startDate": "2025",
+      "position": "Machine Learning Research Fellow",
+      "name": "Autonomous Discovery of Alloys",
+      "startDate": "2026",
       "endDate": "2026",
       "highlights": [
-        "Designed and modelled robotic arm components using 3D CAD.",
-        "Performed finite element analysis in SolidWorks Simulation to evaluate designs."
+        "Evaluated the robustness of machine learning force fields (MLFFs).",
+        "Automated computational experiments using Python and Bash on Canada's Fir HPC cluster.",
+        "Benchmarked MLFFs against density functional theory in collaboration with postdoctoral researchers.",
+        "Presented findings at Undergraduate Engineering Research Day Conference."
       ]
     },
     {
@@ -86,7 +88,7 @@
       "highlights": [
         "Yondan: Certified 4th-degree Black Belt.",
         "Gold medal at the Toronto International Tournament of Martial Arts Champions.",
-        "Taught 100+ students each week through group and private lessons."
+        "Led group and private karate classes for 100+ students each week."
       ]
     }
   ],
@@ -96,9 +98,10 @@
       "startDate": "2026",
       "endDate": "2026",
       "highlights": [
-        "Developed open-source software to generate gradient-based adversarial attacks against MLFFs.",
+        "Developed open-source software to generate gradient-based adversarial atomic perturbations.",
         "Built Python/PyTorch pipelines to process Materials Project and Li-C-O datasets.",
-        "Automated ASE relaxations, perturbations, and contour exploration workflows using Bash and Slurm."
+        "Performed ASE relaxation and perturbations workflows using Bash and Slurm.",
+        "Analyzed and visualized attack performance using NumPy, and Matplotlib."
       ]
     },
     {
@@ -107,7 +110,7 @@
       "endDate": "2026",
       "highlights": [
         "Developed a configurable PyTorch image-classification pipeline supporting reproducible training.",
-        "Implemented workflows for MNIST, Fashion-MNIST, CIFAR-10, and SVHN.",
+        "Designed modular training workflows supporting multiple datasets and model configurations.",
         "Automated experiment tracking with SQLite and SQL to compare accuracy of model configurations."
       ]
     },
@@ -116,65 +119,9 @@
       "startDate": "2026",
       "endDate": "2026",
       "highlights": [
-        "Developed an interactive platform visualizing human disease progression.",
-        "Implemented a retrieval-augmented generation system using PubMed data via IBM watsonx.ai.",
-        "Built an AI-powered 3D web application with React and Three.js."
-      ]
-    },
-    {
-      "name": "Bridge Design Optimization",
-      "startDate": "2025",
-      "endDate": "2025",
-      "highlights": [
-        "Optimized structural performance and prototyped a matboard bridge using Python.",
-        "Ranked 1st in the cohort and 2nd in the Class of 2025 for CIV102."
-      ]
-    },
-    {
-      "name": "Generative Art Engine",
-      "startDate": "2021",
-      "endDate": "2022",
-      "highlights": [
-        "Used the HashLips Art Engine to generate layered NFT artwork from image assets.",
-        "Created and deployed NFTs on OpenSea.io using the Polygon blockchain."
-      ]
-    }
-  ],
-  "ecs": [
-    {
-      "title": "Speedcubing Competitions",
-      "startDate": "2022",
-      "endDate": "2025",
-      "highlights": [
-        "Ranked 90th in Canada for 3x3x3 fewest moves.",
-        "Judged participants at the World Cube Association.",
-        "Club President, taught beginners and organized school-wide competitions."
-      ]
-    },
-    {
-      "title": "Varsity Volleyball",
-      "startDate": "2022",
-      "endDate": "2025",
-      "highlights": [
-        "Team Captain in Grades 10 and 12.",
-        "2nd place, Tier 1 YRAA Championship junior varsity.",
-        "2nd place, Tier 1 YRAA Championship senior varsity."
-      ]
-    },
-    {
-      "title": "Rep Volleyball",
-      "startDate": "2019",
-      "endDate": "2023",
-      "highlights": ["Team Captain and 2×MVP.", "Silver medal at Canada’s 2023 Youth Nationals."]
-    },
-    {
-      "title": "Music Performance",
-      "startDate": "2019",
-      "endDate": "2023",
-      "highlights": [
-        "Level 10 RCM Theory and Instrumental Comprehensive Certificate (First Class Honors).",
-        "Level 10 RCM Practical Piano Certificate (First Class Honors with Distinction).",
-        "Level 8 RCM Practical Violin Certificate (First Class Honors with Distinction)."
+        "Built an interactive 3D web application for visualizing human disease progression.",
+        "Implemented a retrieval-augmented generation system using PubMed data and IBM watsonx.ai.",
+        "Integrated biomedical literature retrieval with an interactive React/Three.js frontend."
       ]
     }
   ]
