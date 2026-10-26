@@ -34,7 +34,7 @@
   "skills": [
     {
       "name": "Languages",
-      "keywords": ["Python", "C", "SQL", "MATLAB", "Bash"]
+      "keywords": ["Python", "C", "SQL", "MATLAB", "SystemVerilog", "Bash"]
     },
     {
       "name": "Libraries/Frameworks",
@@ -52,20 +52,9 @@
       "startDate": "2025",
       "endDate": "Present",
       "highlights": [
-        "Developed Python software in ROS 2 for autonomous control of a 6-DOF robotic arm.",
-        "Implemented inverse kinematics and motion planning using MoveIt 2 and TRAC-IK.",
-        "Designed robotic arm parts using 3D CAD and performed finite element analysis."
-      ]
-    },
-    {
-      "position": "Space Systems Engineer",
-      "name": "University of Toronto Aerospace Team",
-      "startDate": "2026",
-      "endDate": "Present",
-      "highlights": [
-        "Developed Python software for CubeSat attitude determination and control algorithm testing.",
-        "Developed modular Python tools for attitude dynamics and flight simulation.",
-        "Simulated magnetic environments using a Helmholtz cage and MATLAB."
+        "Developing a ROS 2 imitation-learning system to replace inverse kinematics for robotic manipulation.",
+        "Building ROS bag workflows to collect joint-state data for transformer policy training.",
+        "Evaluating LeRobot's ACT model for autonomous hammer pickup and equipment servicing."
       ]
     },
     {
@@ -74,10 +63,21 @@
       "startDate": "2026",
       "endDate": "2026",
       "highlights": [
-        "Evaluated the robustness of machine learning force fields (MLFFs).",
-        "Automated computational experiments using Python and Bash on Canada's Fir HPC cluster.",
+        "Evaluated the robustness of machine learning force fields (MLFFs) for trustworthy AI in materials discovery.",
+        "Automated computational experiments using Python, Bash, and Linux on Canada's Fir HPC cluster.",
         "Benchmarked MLFFs against density functional theory in collaboration with postdoctoral researchers.",
         "Presented findings at Undergraduate Engineering Research Day Conference."
+      ]
+    },
+    {
+      "position": "Space Systems Engineer",
+      "name": "University of Toronto Aerospace Team",
+      "startDate": "2026",
+      "endDate": "2026",
+      "highlights": [
+        "Developed Python software for CubeSat attitude determination and control algorithm testing.",
+        "Developed modular Python tools for attitude dynamics and flight simulation.",
+        "Simulated magnetic environments using a Helmholtz cage and MATLAB."
       ]
     },
     {
@@ -99,13 +99,13 @@
       "endDate": "2026",
       "highlights": [
         "Developed open-source software to generate gradient-based adversarial atomic perturbations.",
-        "Built Python/PyTorch pipelines to process Materials Project and Li-C-O datasets.",
+        "Built data-processing pipelines for Materials Project and Li-C-O datasets with GitHub and Hugging Face.",
         "Performed ASE relaxation and perturbations workflows using Bash and Slurm.",
-        "Analyzed and visualized attack performance using NumPy, and Matplotlib."
+        "Analyzed and visualized attack performance using PyTorch, NumPy, and Matplotlib."
       ]
     },
     {
-      "name": "Neural Lab",
+      "name": "Configurable PyTorch Deep Learning Lab",
       "startDate": "2026",
       "endDate": "2026",
       "highlights": [

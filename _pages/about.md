@@ -50,8 +50,6 @@ latest_posts:
   setInterval(updateTorontoTime, 1000);
 </script>
 
-I'm currently an undergraduate student in [Engineering Science](https://engsci.utoronto.ca/) at the University of Toronto.
+I'm an undergraduate student in [Engineering Science](https://engsci.utoronto.ca/) at the University of Toronto. I build software for machine learning, robotics, and autonomous systems.
 
-I’m interested in building reliable computational tools for scientific discovery and engineering systems. My work spans robotics, machine learning, aerospace, and materials science, with a focus on translating theoretical concepts into testable software.
-
-As a research fellow with the [AutoDIAL](https://autodiallab.ca/) lab, I studied the robustness of machine learning force fields, benchmarked predictions against density functional theory, and ran large-scale experiments on high-performance computing clusters. With [UTAT](https://utat.ca/), I developed attitude determination and control software for CubeSats, including Python simulations of spacecraft dynamics. Beyond research, I worked with [RSX](https://rsx-utoronto.github.io/rsx-website/) on software, ROS, and mechanical design.
+As a research fellow with the [AutoDIAL](https://autodiallab.ca/) lab, I investigated the robustness of machine learning force fields, benchmarked predictions against density functional theory, and ran large-scale experiments on high-performance computing clusters using PyTorch, Bash, and Slurm. With Robotics for Space Exploration ([RSX](https://rsx-utoronto.github.io/rsx-website/)), I'm developing ROS 2 imitation-learning systems for autonomous robotic manipulation, building joint-state data pipelines and evaluating transformer-based policies for equipment servicing. At the University of Toronto Aerospace Team ([UTAT](https://utat.ca/)), I developed Python tools to simulate CubeSat attitude dynamics and test spacecraft control algorithms.
